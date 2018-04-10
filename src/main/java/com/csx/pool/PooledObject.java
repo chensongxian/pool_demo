@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 /**
  * @author csx
  * @Package com.csx.pool
- * @Description: TODO
+ * @Description:
  * @date 2018/4/10 0010
  */
 public interface PooledObject<T> extends Comparable<PooledObject<T>>{

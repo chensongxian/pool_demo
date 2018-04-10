@@ -3,7 +3,7 @@ package com.csx.pool;
 /**
  * @author csx
  * @Package com.csx.pool
- * @Description: TODO
+ * @Description: 定义了操作PooledObject实例生命周期的一些方法
  * @date 2018/4/10 0010
  */
 public interface PooledObjectFactory<T> {
