@@ -3,6 +3,7 @@ package com.csx.pool;
 import sun.reflect.generics.tree.VoidDescriptor;
 
 import java.io.PrintWriter;
+import java.util.Deque;
 
 /**
  * @author csx
@@ -25,6 +26,8 @@ public interface PooledObject<T> extends Comparable<PooledObject<T>>{
 
     long getLastUsedTime();
 
+    long getBorrowedCount();
+
     @Override
     int compareTo(PooledObject<T> o);
 
@@ -39,7 +42,7 @@ public interface PooledObject<T> extends Comparable<PooledObject<T>>{
 
     boolean startEvictionTest();
 
-    boolean endEvictionTest();
+    boolean endEvictionTest(Deque<PooledObject<T>> idleQueue);
 
     boolean allocate();
 

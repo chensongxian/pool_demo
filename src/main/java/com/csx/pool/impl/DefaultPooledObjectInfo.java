@@ -1,6 +1,8 @@
 package com.csx.pool.impl;
 
 import com.csx.pool.PooledObject;
+import com.csx.pool.PooledObjectState;
+import jdk.nashorn.internal.ir.ReturnNode;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -35,6 +37,7 @@ public class DefaultPooledObjectInfo implements DefaultPooledObjectInfoMBean{
     public long getLastBorrowTime() {
         return pooledObject.getLastBorrowTime();
     }
+
 
     @Override
     public String getLastBorrowTimeFormatted() {
@@ -72,6 +75,10 @@ public class DefaultPooledObjectInfo implements DefaultPooledObjectInfoMBean{
 
     @Override
     public long getBorrowedCount() {
-        return -1;
+        if(pooledObject instanceof DefaultPooledObject){
+            return ((DefaultPooledObject<?>) pooledObject).getBorrowedCount();
+        }else{
+            return -1;
+        }
     }
 }
