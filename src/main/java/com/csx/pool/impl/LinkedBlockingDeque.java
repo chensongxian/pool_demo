@@ -2,6 +2,7 @@ package com.csx.pool.impl;
 
 import sun.reflect.generics.tree.VoidDescriptor;
 
+import javax.swing.*;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import javax.tools.JavaCompiler;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.lang.reflect.Array;
 import java.nio.file.FileStore;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 
 /**
@@ -26,17 +28,20 @@ public class LinkedBlockingDeque<E> extends AbstractQueue<E> implements Deque<E>
 
     @Override
     public boolean offer(E e) {
-        return false;
+        return offerLast(e);
     }
 
+    public boolean offer(E e,long timeout,TimeUnit unit) throws InterruptedException {
+        return offerLast(e,timeout,unit);
+    }
     @Override
     public E poll() {
-        return null;
+        return pollFirst();
     }
 
     @Override
     public E peek() {
-        return null;
+        return peekFirst();
     }
 
     /**
@@ -221,85 +226,332 @@ public class LinkedBlockingDeque<E> extends AbstractQueue<E> implements Deque<E>
         }
     }
 
+    /** Descending iterator */
+    private class DescendingItr extends AbstractItr {
+        @Override
+        Node<E> firstNode() { return last; }
+        @Override
+        Node<E> nextNode(Node<E> n) { return n.prev; }
+    }
 
     @Override
     public void addFirst(E e) {
-
+        if(!offerFirst(e)){
+            throw new IllegalStateException("deque is full");
+        }
     }
 
     @Override
     public void addLast(E e) {
-
+        if(!offerLast(e)){
+            throw new IllegalStateException("deque is full");
+        }
     }
 
     @Override
     public boolean offerFirst(E e) {
+        if(e==null){
+            throw new NullPointerException();
+        }
+        lock.lock();
+        try {
+            linkFirst(e);
+        }finally {
+            lock.unlock();
+        }
         return false;
     }
 
     @Override
     public boolean offerLast(E e) {
+        if(e==null){
+            throw new NullPointerException();
+        }
+        lock.lock();
+        try {
+            linkLast(e);
+        }finally {
+            lock.unlock();
+        }
         return false;
     }
 
+    public void putFirst(E e)throws InterruptedException{
+        if(e==null){
+            throw new NullPointerException();
+        }
+        lock.lock();
+        try {
+            while (!linkFirst(e)){
+                notFull.await();
+            }
+        }finally {
+            lock.unlock();
+        }
+    }
+
+    public void putLast(E e)throws InterruptedException{
+        if(e==null){
+            throw new NullPointerException();
+        }
+        lock.lock();
+        try {
+            while (!linkLast(e)){
+                notFull.await();
+            }
+        }finally {
+            lock.unlock();
+        }
+    }
+
+    public boolean offerFirst(E e, long timeout, TimeUnit unit)throws InterruptedException{
+        if(e==null){
+            throw new NullPointerException();
+        }
+        long nanos=unit.toNanos(timeout);
+        lock.lockInterruptibly();
+        try {
+            while (!linkFirst(e)){
+                if(nanos<=0){
+                    return false;
+                }
+                notFull.awaitNanos(nanos);
+            }
+            return true;
+        }finally {
+            lock.unlock();
+        }
+    }
+
+    public boolean offerLast(E e,long timeout,TimeUnit unit)throws InterruptedException{
+        if(e==null){
+            throw new NullPointerException();
+        }
+        long nanos=unit.toNanos(timeout);
+        lock.lockInterruptibly();
+        try {
+            while (!linkLast(e)){
+                if(nanos<=0){
+                    return false;
+                }
+                notFull.awaitNanos(nanos);
+            }
+            return true;
+        }finally {
+            lock.unlock();
+        }
+    }
+
+
     @Override
     public E removeFirst() {
-        return null;
+        E x=pollFirst();
+        if(x==null){
+            throw new NoSuchElementException();
+        }
+        return x;
     }
 
     @Override
     public E removeLast() {
-        return null;
+        E x=pollLast();
+        if(x==null){
+            throw new NoSuchElementException();
+        }
+        return x;
     }
 
     @Override
     public E pollFirst() {
-        return null;
+        lock.lock();
+        try {
+            return unlinkFirst();
+        }finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public E pollLast() {
-        return null;
+        lock.lock();
+        try {
+            return unlinkLast();
+        }finally {
+            lock.unlock();
+        }
+    }
+
+    public E takeFirst()throws InterruptedException{
+        lock.lock();
+        try {
+            E x;
+            while ((x=unlinkFirst())==null){
+                notEmpty.await();
+            }
+            return x;
+        }finally {
+            lock.unlock();
+        }
+    }
+
+    public E takeLast()throws InterruptedException{
+        lock.lock();
+        try {
+            E x;
+            while ((x=unlinkLast())==null){
+                notEmpty.await();
+            }
+            return x;
+        }finally {
+            lock.unlock();
+        }
+    }
+
+    public E take() throws InterruptedException {
+        return takeFirst();
     }
 
     @Override
+    public E element() {
+        return getFirst();
+    }
+
+    public E pollFirst(long timeout, TimeUnit unit)throws InterruptedException{
+        long nanos=unit.toNanos(timeout);
+        lock.lockInterruptibly();
+        try {
+            E x;
+            while ((x=unlinkFirst())==null){
+                if(nanos<=0){
+                    return null;
+                }
+                notEmpty.awaitNanos(nanos);
+            }
+            return x;
+        }finally {
+            lock.unlock();
+        }
+    }
+
+    public E pollLast(long timeout,TimeUnit unit)throws InterruptedException{
+        long nanos=unit.toNanos(timeout);
+        lock.lockInterruptibly();
+        try {
+            E x;
+            while ((x=unlinkLast())==null){
+                if(nanos<=0){
+                    return null;
+                }
+                notEmpty.awaitNanos(nanos);
+            }
+            return x;
+        }finally {
+            lock.unlock();
+        }
+    }
+    @Override
     public E getFirst() {
-        return null;
+        E x=peekFirst();
+        if(x==null){
+            throw new NoSuchElementException();
+        }
+        return x;
     }
 
     @Override
     public E getLast() {
-        return null;
+        E x=peekLast();
+        if(x==null){
+            throw new NoSuchElementException();
+        }
+        return x;
     }
 
     @Override
     public E peekFirst() {
-        return null;
+        lock.lock();
+        try {
+            return first==null?null:first.item;
+        }finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public E peekLast() {
-        return null;
+        lock.lock();
+        try {
+            return last==null?null:last.item;
+        }finally {
+            lock.unlock();
+        }
     }
 
+    /**
+     * 删除第一个相遇的节点
+     * @param o
+     * @return
+     */
     @Override
     public boolean removeFirstOccurrence(Object o) {
-        return false;
+        if(o==null){
+            return false;
+        }
+        lock.lock();
+        try {
+            for(Node<E> p=first;p!=null;p=p.next){
+                if(o.equals(p.item)){
+                    unlink(p);
+                    return true;
+                }
+            }
+            return false;
+        }finally {
+            lock.unlock();
+        }
     }
 
+    /**
+     * 删除最后一个相遇的节点
+     * @param o
+     * @return
+     */
     @Override
     public boolean removeLastOccurrence(Object o) {
-        return false;
+        if(o==null){
+            return false;
+        }
+        lock.lock();
+        try {
+            for(Node<E> p=last;p!=null;p=p.prev){
+                if(o.equals(p.item)){
+                    unlink(p);
+                    return true;
+                }
+            }
+            return false;
+        }finally {
+            lock.unlock();
+        }
     }
 
     @Override
     public void push(E e) {
-
+        addFirst(e);
     }
 
     @Override
     public E pop() {
-        return null;
+        return removeFirst();
+    }
+
+
+    public void put(E e)throws InterruptedException{
+        putLast(e);
+    }
+    @Override
+    public boolean remove(Object o) {
+        return removeFirstOccurrence(o);
     }
 
     @Override
@@ -564,6 +816,78 @@ public class LinkedBlockingDeque<E> extends AbstractQueue<E> implements Deque<E>
         try {
             lock.interruptWaiters(notEmpty);
         }finally {
+            lock.unlock();
+        }
+    }
+
+
+    /**
+     * Returns the number of additional elements that this deque can ideally
+     * (in the absence of memory or resource constraints) accept without
+     * blocking. This is always equal to the initial capacity of this deque
+     * less the current {@code size} of this deque.
+     *
+     * <p>Note that you <em>cannot</em> always tell if an attempt to insert
+     * an element will succeed by inspecting {@code remainingCapacity}
+     * because it may be the case that another thread is about to
+     * insert or remove an element.
+     *
+     * @return The number of additional elements the queue is able to accept
+     */
+    public int remainingCapacity() {
+        lock.lock();
+        try {
+            return capacity - count;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    /**
+     * Empty the queue to the specified collection.
+     *
+     * @param c The collection to add the elements to
+     *
+     * @return number of elements added to the collection
+     *
+     * @throws UnsupportedOperationException
+     * @throws ClassCastException
+     * @throws NullPointerException
+     * @throws IllegalArgumentException
+     */
+    public int drainTo(Collection<? super E> c) {
+        return drainTo(c, Integer.MAX_VALUE);
+    }
+
+    /**
+     * Empty no more than the specified number of elements from the queue to the
+     * specified collection.
+     *
+     * @param c           collection to add the elements to
+     * @param maxElements maximum number of elements to remove from the queue
+     *
+     * @return number of elements added to the collection
+     * @throws UnsupportedOperationException
+     * @throws ClassCastException
+     * @throws NullPointerException
+     * @throws IllegalArgumentException
+     */
+    public int drainTo(Collection<? super E> c, int maxElements) {
+        if (c == null) {
+            throw new NullPointerException();
+        }
+        if (c == this) {
+            throw new IllegalArgumentException();
+        }
+        lock.lock();
+        try {
+            int n = Math.min(maxElements, count);
+            for (int i = 0; i < n; i++) {
+                c.add(first.item);   // In this order, in case add() throws.
+                unlinkFirst();
+            }
+            return n;
+        } finally {
             lock.unlock();
         }
     }
