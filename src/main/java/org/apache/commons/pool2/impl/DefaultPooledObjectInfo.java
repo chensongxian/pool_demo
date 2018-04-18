@@ -1,23 +1,42 @@
-package com.csx.pool.impl;
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one or more
+ * contributor license agreements.  See the NOTICE file distributed with
+ * this work for additional information regarding copyright ownership.
+ * The ASF licenses this file to You under the Apache License, Version 2.0
+ * (the "License"); you may not use this file except in compliance with
+ * the License.  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.commons.pool2.impl;
 
-import com.csx.pool.PooledObject;
-import com.csx.pool.PooledObjectState;
-import jdk.nashorn.internal.ir.ReturnNode;
+import org.apache.commons.pool2.PooledObject;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 
 /**
- * @author csx
- * @Package com.csx.pool.impl
- * @Description: TODO
- * @date 2018/4/11 0011
+ * Implementation of object that is used to provide information on pooled
+ * objects via JMX.
+ *
+ * @since 2.0
  */
-public class DefaultPooledObjectInfo implements DefaultPooledObjectInfoMBean{
+public class DefaultPooledObjectInfo implements DefaultPooledObjectInfoMBean {
 
-    private PooledObject<?> pooledObject;
+    private final PooledObject<?> pooledObject;
 
+    /**
+     * Create a new instance for the given pooled object.
+     *
+     * @param pooledObject The pooled object that this instance will represent
+     */
     public DefaultPooledObjectInfo(PooledObject<?> pooledObject) {
         this.pooledObject = pooledObject;
     }
@@ -37,7 +56,6 @@ public class DefaultPooledObjectInfo implements DefaultPooledObjectInfoMBean{
     public long getLastBorrowTime() {
         return pooledObject.getLastBorrowTime();
     }
-
 
     @Override
     public String getLastBorrowTimeFormatted() {
@@ -75,9 +93,10 @@ public class DefaultPooledObjectInfo implements DefaultPooledObjectInfoMBean{
 
     @Override
     public long getBorrowedCount() {
-        if(pooledObject instanceof DefaultPooledObject){
+        // TODO Simplify this once getBorrowedCount has been added to PooledObject
+        if (pooledObject instanceof DefaultPooledObject) {
             return ((DefaultPooledObject<?>) pooledObject).getBorrowedCount();
-        }else{
+        } else {
             return -1;
         }
     }
