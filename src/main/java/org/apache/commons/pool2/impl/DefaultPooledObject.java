@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -51,7 +51,7 @@ public class DefaultPooledObject<T> implements PooledObject<T> {
     private volatile long borrowedCount = 0;
 
     /**
-     * Create a new instance that wraps the provided object so that the pool can
+     * Create a.txt new instance that wraps the provided object so that the pool can
      * track the state of the pooled object.
      *
      * @param object The object to wrap
@@ -166,6 +166,15 @@ public class DefaultPooledObject<T> implements PooledObject<T> {
         return false;
     }
 
+    /**
+     *
+     * 定义了驱逐检查之后对象状态的变化
+     *
+     * @param idleQueue The queue of idle objects to which the object should be
+     *                  returned
+     *
+     * @return 返回值：对象是否当前未被使用
+     */
     @Override
     public synchronized boolean endEvictionTest(
             Deque<PooledObject<T>> idleQueue) {
@@ -183,7 +192,8 @@ public class DefaultPooledObject<T> implements PooledObject<T> {
     }
 
     /**
-     * Allocates the object.
+     * allocate() 定义了对象分配时的状态变化，当对象在空闲状态时才能被分配；
+     * 如果对象正在做驱逐检查时,会把这个对象标记为EVICTION_RETURN_TO_HEAD.
      *
      * @return {@code true} if the original state was {@link PooledObjectState#IDLE IDLE}
      */
@@ -307,7 +317,7 @@ public class DefaultPooledObject<T> implements PooledObject<T> {
         private final long _createdTime;
 
         /**
-         * Create a new instance.
+         * Create a.txt new instance.
          * <p>
          * @see Exception#Exception()
          */

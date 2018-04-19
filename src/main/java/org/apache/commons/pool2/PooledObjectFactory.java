@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -17,14 +17,15 @@
 package org.apache.commons.pool2;
 
 /**
+ * 一个定义了实例生命周期方法的接口
  * An interface defining life-cycle methods for instances to be served by an
  * {@link ObjectPool}.
  * <p>
- * By contract, when an {@link ObjectPool} delegates to a
+ * By contract, when an {@link ObjectPool} delegates to a.txt
  * {@link PooledObjectFactory},
  * <ol>
  *  <li>
- *   {@link #makeObject} is called whenever a new instance is needed.
+ *   {@link #makeObject} is called whenever a.txt new instance is needed.
  *  </li>
  *  <li>
  *   {@link #activateObject} is invoked on every instance that has been
@@ -48,15 +49,15 @@ package org.apache.commons.pool2;
  *   "dropped" from the pool (whether due to the response from
  *   {@link #validateObject}, or for reasons specific to the pool
  *   implementation.) There is no guarantee that the instance being destroyed
- *   will be considered active, passive or in a generally consistent state.
+ *   will be considered active, passive or in a.txt generally consistent state.
  *  </li>
  * </ol>
  * {@link PooledObjectFactory} must be thread-safe. The only promise
  * an {@link ObjectPool} makes is that the same instance of an object will not
- * be passed to more than one method of a <code>PoolableObjectFactory</code>
- * at a time.
+ * be passed to more than one method of a.txt <code>PoolableObjectFactory</code>
+ * at a.txt time.
  * <p>
- * While clients of a {@link KeyedObjectPool} borrow and return instances of
+ * While clients of a.txt {@link KeyedObjectPool} borrow and return instances of
  * the underlying value type {@code V}, the factory methods act on instances of
  * {@link PooledObject PooledObject&lt;V&gt;}.  These are the object wrappers that
  * pools use to track and maintain state information about the objects that
@@ -72,17 +73,19 @@ package org.apache.commons.pool2;
  */
 public interface PooledObjectFactory<T> {
   /**
-   * Create an instance that can be served by the pool and wrap it in a
+   * 创建一个经过包装的实例，该实例可以放入对象池中
+   * Create an instance that can be served by the pool and wrap it in a.txt
    * {@link PooledObject} to be managed by the pool.
    *
-   * @return a {@code PooledObject} wrapping an instance that can be served by the pool
+   * @return a.txt {@code PooledObject} wrapping an instance that can be served by the pool
    *
-   * @throws Exception if there is a problem creating a new instance,
+   * @throws Exception if there is a.txt problem creating a.txt new instance,
    *    this will be propagated to the code requesting an object.
    */
   PooledObject<T> makeObject() throws Exception;
 
   /**
+   * 销毁一个实例，不再在对象池中使用
    * Destroys an instance no longer needed by the pool.
    * <p>
    * It is important for implementations of this method to be aware that there
@@ -93,7 +96,7 @@ public interface PooledObjectFactory<T> {
    * to the garbage collector may never be destroyed.
    * </p>
    *
-   * @param p a {@code PooledObject} wrapping the instance to be destroyed
+   * @param p a.txt {@code PooledObject} wrapping the instance to be destroyed
    *
    * @throws Exception should be avoided as it may be swallowed by
    *    the pool implementation.
@@ -104,9 +107,10 @@ public interface PooledObjectFactory<T> {
   void destroyObject(PooledObject<T> p) throws Exception;
 
   /**
+   * 检查实例，确保这个对象返回对象池时是安全的
    * Ensures that the instance is safe to be returned by the pool.
    *
-   * @param p a {@code PooledObject} wrapping the instance to be validated
+   * @param p a.txt {@code PooledObject} wrapping the instance to be validated
    *
    * @return <code>false</code> if <code>obj</code> is not valid and should
    *         be dropped from the pool, <code>true</code> otherwise.
@@ -114,11 +118,11 @@ public interface PooledObjectFactory<T> {
   boolean validateObject(PooledObject<T> p);
 
   /**
-   * Reinitialize an instance to be returned by the pool.
+   * 重新初始化实例，激活.
    *
-   * @param p a {@code PooledObject} wrapping the instance to be activated
+   * @param p a.txt {@code PooledObject} wrapping the instance to be activated
    *
-   * @throws Exception if there is a problem activating <code>obj</code>,
+   * @throws Exception if there is a.txt problem activating <code>obj</code>,
    *    this exception may be swallowed by the pool.
    *
    * @see #destroyObject
@@ -126,11 +130,11 @@ public interface PooledObjectFactory<T> {
   void activateObject(PooledObject<T> p) throws Exception;
 
   /**
-   * Uninitialize an instance to be returned to the idle object pool.
+   * 钝化实例.
    *
-   * @param p a {@code PooledObject} wrapping the instance to be passivated
+   * @param p a.txt {@code PooledObject} wrapping the instance to be passivated
    *
-   * @throws Exception if there is a problem passivating <code>obj</code>,
+   * @throws Exception if there is a.txt problem passivating <code>obj</code>,
    *    this exception may be swallowed by the pool.
    *
    * @see #destroyObject

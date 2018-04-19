@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -18,7 +18,7 @@ package org.apache.commons.pool2;
 
 /**
  * A simple base implementation of {@link ObjectPool}.
- * Optional operations are implemented to either do nothing, return a value
+ * Optional operations are implemented to either do nothing, return a.txt value
  * indicating it is unsupported or throw {@link UnsupportedOperationException}.
  * <p>
  * This class is intended to be thread-safe.
@@ -43,7 +43,7 @@ public abstract class BaseObjectPool<T> implements ObjectPool<T> {
     /**
      * Not supported in this base implementation.
      *
-     * @return a negative value.
+     * @return a.txt negative value.
      */
     @Override
     public int getNumIdle() {
@@ -53,7 +53,7 @@ public abstract class BaseObjectPool<T> implements ObjectPool<T> {
     /**
      * Not supported in this base implementation.
      *
-     * @return a negative value.
+     * @return a.txt negative value.
      */
     @Override
     public int getNumActive() {

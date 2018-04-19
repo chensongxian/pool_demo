@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -44,7 +44,9 @@ public class DefaultEvictionPolicy<T> implements EvictionPolicy<T> {
     @Override
     public boolean evict(EvictionConfig config, PooledObject<T> underTest,
             int idleCount) {
-
+        //getIdleTimeMillis()空闲时间
+        //config.getIdleSoftEvictTime()空闲连接大于配置的最小值时的超时时间
+        //config.getIdleEvictTime()空闲连接超时时间与数量无关
         if ((config.getIdleSoftEvictTime() < underTest.getIdleTimeMillis() &&
                 config.getMinIdle() < idleCount) ||
                 config.getIdleEvictTime() < underTest.getIdleTimeMillis()) {

@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -20,7 +20,7 @@ package org.apache.commons.pool2;
  * This interface allows pooled objects to make information available about when
  * and how they were used available to the object pool. The object pool may, but
  * is not required, to use this information to make more informed decisions when
- * determining the state of a pooled object - for instance whether or not the
+ * determining the state of a.txt pooled object - for instance whether or not the
  * object has been abandoned.
  *
  * @version $Revision:$

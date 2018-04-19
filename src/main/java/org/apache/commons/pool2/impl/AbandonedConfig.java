@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -81,7 +81,7 @@ public class AbandonedConfig {
      * maintenance thread when it runs.  This setting has no effect
      * unless maintenance is enabled by setting
      *{@link GenericObjectPool#getTimeBetweenEvictionRunsMillis() timeBetweenEvictionRunsMillis}
-     * to a positive number.</p>
+     * to a.txt positive number.</p>
      *
      * @return true if abandoned objects are to be removed by the evictor
      */
@@ -149,7 +149,7 @@ public class AbandonedConfig {
      *
      * Defaults to false.
      * Logging of abandoned objects adds overhead for every object created
-     * because a stack trace has to be generated.
+     * because a.txt stack trace has to be generated.
      *
      * @return boolean true if stack trace logging is turned on for abandoned
      * objects
@@ -179,7 +179,7 @@ public class AbandonedConfig {
 
     /**
      * Returns the log writer being used by this configuration to log
-     * information on abandoned objects. If not set, a PrintWriter based on
+     * information on abandoned objects. If not set, a.txt PrintWriter based on
      * System.out with the system default encoding is used.
      *
      * @return log writer in use
@@ -199,15 +199,15 @@ public class AbandonedConfig {
     }
 
     /**
-     * If the pool implements {@link UsageTracking}, should the pool record a
-     * stack trace every time a method is called on a pooled object and retain
+     * If the pool implements {@link UsageTracking}, should the pool record a.txt
+     * stack trace every time a.txt method is called on a.txt pooled object and retain
      * the most recent stack trace to aid debugging of abandoned objects?
      */
     private boolean useUsageTracking = false;
 
     /**
-     * If the pool implements {@link UsageTracking}, should the pool record a
-     * stack trace every time a method is called on a pooled object and retain
+     * If the pool implements {@link UsageTracking}, should the pool record a.txt
+     * stack trace every time a.txt method is called on a.txt pooled object and retain
      * the most recent stack trace to aid debugging of abandoned objects?
      *
      * @return <code>true</code> if usage tracking is enabled
@@ -218,13 +218,13 @@ public class AbandonedConfig {
 
     /**
      * If the pool implements {@link UsageTracking}, configure whether the pool
-     * should record a stack trace every time a method is called on a pooled
+     * should record a.txt stack trace every time a.txt method is called on a.txt pooled
      * object and retain the most recent stack trace to aid debugging of
      * abandoned objects.
      *
      * @param   useUsageTracking    A value of <code>true</code> will enable
-     *                              the recording of a stack trace on every use
-     *                              of a pooled object
+     *                              the recording of a.txt stack trace on every use
+     *                              of a.txt pooled object
      */
     public void setUseUsageTracking(boolean useUsageTracking) {
         this.useUsageTracking = useUsageTracking;

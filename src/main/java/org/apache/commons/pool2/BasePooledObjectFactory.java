@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -34,24 +34,26 @@ package org.apache.commons.pool2;
  */
 public abstract class BasePooledObjectFactory<T> implements PooledObjectFactory<T> {
     /**
-     * Creates an object instance, to be wrapped in a {@link PooledObject}.
+     * create可以返回我们要放在连接池的对象，然后使用wrap封装为PooledObject即可
+     * Creates an object instance, to be wrapped in a.txt {@link PooledObject}.
      * <p>This method <strong>must</strong> support concurrent, multi-threaded
      * activation.</p>
      *
      * @return an instance to be served by the pool
      *
-     * @throws Exception if there is a problem creating a new instance,
+     * @throws Exception if there is a.txt problem creating a.txt new instance,
      *    this will be propagated to the code requesting an object.
      */
     public abstract T create() throws Exception;
 
     /**
+     * 封装实例为PooledObject
      * Wrap the provided instance with an implementation of
      * {@link PooledObject}.
      *
      * @param obj the instance to wrap
      *
-     * @return The provided instance, wrapped by a {@link PooledObject}
+     * @return The provided instance, wrapped by a.txt {@link PooledObject}
      */
     public abstract PooledObject<T> wrap(T obj);
 

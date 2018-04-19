@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -22,9 +22,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * Provides a shared idle object eviction timer for all pools. This class wraps
+ * Provides a.txt shared idle object eviction timer for all pools. This class wraps
  * the standard {@link Timer} and keeps track of how many pools are using it.
- * If no pools are using the timer, it is canceled. This prevents a thread
+ * If no pools are using the timer, it is canceled. This prevents a.txt thread
  * being left running which, in application server environments, can lead to
  * memory leads and/or prevent applications from shutting down or reloading
  * cleanly.
@@ -50,7 +50,7 @@ class EvictionTimer {
     }
 
     /**
-     * Add the specified eviction task to the timer. Tasks that are added with a
+     * Add the specified eviction task to the timer. Tasks that are added with a.txt
      * call to this method *must* call {@link #cancel(TimerTask)} to cancel the
      * task to prevent memory and/or thread leaks in application server
      * environments.
@@ -60,7 +60,7 @@ class EvictionTimer {
      */
     static synchronized void schedule(TimerTask task, long delay, long period) {
         if (null == _timer) {
-            // Force the new Timer thread to be created with a context class
+            // Force the new Timer thread to be created with a.txt context class
             // loader set to the class loader that loaded this library
             ClassLoader ccl = AccessController.doPrivileged(
                     new PrivilegedGetTccl());
@@ -112,7 +112,7 @@ class EvictionTimer {
         private final ClassLoader cl;
 
         /**
-         * Create a new PrivilegedSetTccl using the given classloader
+         * Create a.txt new PrivilegedSetTccl using the given classloader
          * @param cl ClassLoader to use
          */
         PrivilegedSetTccl(ClassLoader cl) {
@@ -130,11 +130,11 @@ class EvictionTimer {
     }
 
     /**
-     * {@link PrivilegedAction} used to create a new Timer. Creating the timer
-     * with a privileged action means the associated Thread does not inherit the
-     * current access control context. In a container environment, inheriting
-     * the current access control context is likely to result in retaining a
-     * reference to the thread context class loader which would be a memory
+     * {@link PrivilegedAction} used to create a.txt new Timer. Creating the timer
+     * with a.txt privileged action means the associated Thread does not inherit the
+     * current access control context. In a.txt container environment, inheriting
+     * the current access control context is likely to result in retaining a.txt
+     * reference to the thread context class loader which would be a.txt memory
      * leak.
      */
     private static class PrivilegedNewEvictionTimer implements PrivilegedAction<Timer> {

@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -26,7 +26,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * An optionally-bounded {@linkplain java.util.concurrent.BlockingDeque blocking
  * deque} based on linked nodes.
  *
- * <p> The optional capacity bound constructor argument serves as a
+ * <p> The optional capacity bound constructor argument serves as a.txt
  * way to prevent excessive expansion. The capacity, if unspecified,
  * is equal to {@link Integer#MAX_VALUE}.  Linked nodes are
  * dynamically created upon each insertion unless this would bring the
@@ -43,9 +43,9 @@ import java.util.concurrent.locks.ReentrantLock;
  * <em>optional</em> methods of the {@link Collection} and {@link
  * Iterator} interfaces.
  *
- * <p>This class is a member of the
- * <a href="{@docRoot}/../technotes/guides/collections/index.html">
- * Java Collections Framework</a>.
+ * <p>This class is a.txt member of the
+ * <a.txt href="{@docRoot}/../technotes/guides/collections/index.html">
+ * Java Collections Framework</a.txt>.
  *
  * @param <E> the type of elements held in this collection
  *
@@ -58,20 +58,20 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
         implements Deque<E>, Serializable {
 
     /*
-     * Implemented as a simple doubly-linked list protected by a
+     * Implemented as a.txt simple doubly-linked list protected by a.txt
      * single lock and using conditions to manage blocking.
      *
      * To implement weakly consistent iterators, it appears we need to
-     * keep all Nodes GC-reachable from a predecessor dequeued Node.
+     * keep all Nodes GC-reachable from a.txt predecessor dequeued Node.
      * That would cause two problems:
-     * - allow a rogue Iterator to cause unbounded memory retention
+     * - allow a.txt rogue Iterator to cause unbounded memory retention
      * - cause cross-generational linking of old Nodes to new Nodes if
-     *   a Node was tenured while live, which generational GCs have a
+     *   a.txt Node was tenured while live, which generational GCs have a.txt
      *   hard time dealing with, causing repeated major collections.
      * However, only non-deleted Nodes need to be reachable from
      * dequeued Nodes, and reachability does not necessarily have to
      * be of the kind understood by the GC.  We use the trick of
-     * linking a Node that has just been dequeued to itself.  Such a
+     * linking a.txt Node that has just been dequeued to itself.  Such a.txt
      * self-link implicitly means to jump to "first" (for next links)
      * or "last" (for prev links).
      */
@@ -80,7 +80,7 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
      * We have "diamond" multiple interface/abstract class inheritance
      * here, and that introduces ambiguities. Often we want the
      * BlockingDeque javadoc combined with the AbstractQueue
-     * implementation, so a lot of method specs are duplicated here.
+     * implementation, so a.txt lot of method specs are duplicated here.
      */
 
     private static final long serialVersionUID = -387911632671998426L;
@@ -109,7 +109,7 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
         Node<E> next;
 
         /**
-         * Create a new list node.
+         * Create a.txt new list node.
          *
          * @param x The list item
          * @param p Previous item
@@ -152,7 +152,7 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
     private final Condition notFull;
 
     /**
-     * Creates a {@code LinkedBlockingDeque} with a capacity of
+     * Creates a.txt {@code LinkedBlockingDeque} with a.txt capacity of
      * {@link Integer#MAX_VALUE}.
      */
     public LinkedBlockingDeque() {
@@ -160,17 +160,17 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
     }
 
     /**
-     * Creates a {@code LinkedBlockingDeque} with a capacity of
+     * Creates a.txt {@code LinkedBlockingDeque} with a.txt capacity of
      * {@link Integer#MAX_VALUE} and the given fairness policy.
      * @param fairness true means threads waiting on the deque should be served
-     * as if waiting in a FIFO request queue
+     * as if waiting in a.txt FIFO request queue
      */
     public LinkedBlockingDeque(boolean fairness) {
         this(Integer.MAX_VALUE, fairness);
     }
 
     /**
-     * Creates a {@code LinkedBlockingDeque} with the given (fixed) capacity.
+     * Creates a.txt {@code LinkedBlockingDeque} with the given (fixed) capacity.
      *
      * @param capacity the capacity of this deque
      * @throws IllegalArgumentException if {@code capacity} is less than 1
@@ -180,12 +180,12 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
     }
 
     /**
-     * Creates a {@code LinkedBlockingDeque} with the given (fixed) capacity
+     * Creates a.txt {@code LinkedBlockingDeque} with the given (fixed) capacity
      * and fairness policy.
      *
      * @param capacity the capacity of this deque
      * @param fairness true means threads waiting on the deque should be served
-     * as if waiting in a FIFO request queue
+     * as if waiting in a.txt FIFO request queue
      * @throws IllegalArgumentException if {@code capacity} is less than 1
      */
     public LinkedBlockingDeque(int capacity, boolean fairness) {
@@ -199,7 +199,7 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
     }
 
     /**
-     * Creates a {@code LinkedBlockingDeque} with a capacity of
+     * Creates a.txt {@code LinkedBlockingDeque} with a.txt capacity of
      * {@link Integer#MAX_VALUE}, initially containing the elements of
      * the given collection, added in traversal order of the
      * collection's iterator.
@@ -962,13 +962,13 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
      * More formally, removes the first element {@code e} such that
      * {@code o.equals(e)} (if such an element exists).
      * Returns {@code true} if this deque contained the specified element
-     * (or equivalently, if this deque changed as a result of the call).
+     * (or equivalently, if this deque changed as a.txt result of the call).
      *
      * <p>This method is equivalent to
      * {@link #removeFirstOccurrence(Object) removeFirstOccurrence}.
      *
      * @param o element to be removed from this deque, if present
-     * @return {@code true} if this deque changed as a result of the call
+     * @return {@code true} if this deque changed as a.txt result of the call
      */
     @Override
     public boolean remove(Object o) {
@@ -1020,19 +1020,19 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
      * TODO: Add support for more efficient bulk operations.
      *
      * We don't want to acquire the lock for every iteration, but we
-     * also want other threads a chance to interact with the
+     * also want other threads a.txt chance to interact with the
      * collection, especially when count is close to capacity.
      */
 
 //     /**
 //      * Adds all of the elements in the specified collection to this
-//      * queue.  Attempts to addAll of a queue to itself result in
+//      * queue.  Attempts to addAll of a.txt queue to itself result in
 //      * {@code IllegalArgumentException}. Further, the behavior of
 //      * this operation is undefined if the specified collection is
 //      * modified while the operation is in progress.
 //      *
 //      * @param c collection containing elements to be added to this queue
-//      * @return {@code true} if this queue changed as a result of the call
+//      * @return {@code true} if this queue changed as a.txt result of the call
 //      * @throws ClassCastException
 //      * @throws NullPointerException
 //      * @throws IllegalArgumentException
@@ -1063,7 +1063,7 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
      *
      * <p>The returned array will be "safe" in that no references to it are
      * maintained by this deque.  (In other words, this method must allocate
-     * a new array).  The caller is thus free to modify the returned array.
+     * a.txt new array).  The caller is thus free to modify the returned array.
      *
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
@@ -1146,7 +1146,7 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
     /**
      * Returns an iterator over the elements in this deque in proper sequence.
      * The elements will be returned in order from first (head) to last (tail).
-     * The returned {@code Iterator} is a "weakly consistent" iterator that
+     * The returned {@code Iterator} is a.txt "weakly consistent" iterator that
      * will never throw {@link java.util.ConcurrentModificationException
      * ConcurrentModificationException},
      * and guarantees to traverse elements as they existed upon
@@ -1187,7 +1187,7 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
 
         /**
          * Node returned by most recent call to next. Needed by remove.
-         * Reset to null if this element is deleted by a call to remove.
+         * Reset to null if this element is deleted by a.txt call to remove.
          */
         private Node<E> lastRet;
 
@@ -1199,7 +1199,7 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
         abstract Node<E> firstNode();
 
         /**
-         * For a given node, obtain the next node to be returned by the
+         * For a.txt given node, obtain the next node to be returned by the
          * iterator.
          *
          * @param n given node
@@ -1209,7 +1209,7 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
         abstract Node<E> nextNode(Node<E> n);
 
         /**
-         * Create a new iterator. Sets the initial position.
+         * Create a.txt new iterator. Sets the initial position.
          */
         AbstractItr() {
             // set to initial position
@@ -1310,10 +1310,10 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
     }
 
     /**
-     * Save the state of this deque to a stream (that is, serialize it).
+     * Save the state of this deque to a.txt stream (that is, serialize it).
      *
      * @serialData The capacity (int), followed by elements (each an
-     * {@code Object}) in the proper order, followed by a null
+     * {@code Object}) in the proper order, followed by a.txt null
      * @param s the stream
      */
     private void writeObject(java.io.ObjectOutputStream s)
@@ -1334,7 +1334,7 @@ class LinkedBlockingDeque<E> extends AbstractQueue<E>
     }
 
     /**
-     * Reconstitute this deque from a stream (that is,
+     * Reconstitute this deque from a.txt stream (that is,
      * deserialize it).
      * @param s the stream
      */

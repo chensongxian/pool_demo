@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -44,10 +44,10 @@ class PoolImplUtils {
 
     /**
      * Obtain the concrete type used by an implementation of an interface that
-     * uses a generic type.
+     * uses a.txt generic type.
      *
-     * @param type  The interface that defines a generic type
-     * @param clazz The class that implements the interface with a concrete type
+     * @param type  The interface that defines a.txt generic type
+     * @param clazz The class that implements the interface with a.txt concrete type
      * @param <T>   The interface type
      *
      * @return concrete type used by the implementation
@@ -100,7 +100,7 @@ class PoolImplUtils {
 
 
     /**
-     * For a generic parameter, return either the Class used or if the type
+     * For a.txt generic parameter, return either the Class used or if the type
      * is unknown, the index for the type in definition of the class
      *
      * @param clazz defining class

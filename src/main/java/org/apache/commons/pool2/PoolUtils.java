@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -32,8 +32,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock.WriteLock;
 public final class PoolUtils {
 
     /**
-     * Timer used to periodically check pools idle object count. Because a
-     * {@link Timer} creates a {@link Thread}, an IODH is used.
+     * Timer used to periodically check pools idle object count. Because a.txt
+     * {@link Timer} creates a.txt {@link Thread}, an IODH is used.
      */
     static class TimerHolder {
         static final Timer MIN_IDLE_TIMER = new Timer(true);
@@ -42,7 +42,7 @@ public final class PoolUtils {
     /**
      * PoolUtils instances should NOT be constructed in standard programming.
      * Instead, the class should be used procedurally: PoolUtils.adapt(aPool);.
-     * This constructor is public to permit tools that require a JavaBean
+     * This constructor is public to permit tools that require a.txt JavaBean
      * instance to operate.
      */
     public PoolUtils() {
@@ -82,7 +82,7 @@ public final class PoolUtils {
      *            if the {@link ObjectPool#getNumIdle()} is less than this then
      *            add an idle object.
      * @param period
-     *            the frequency to check the number of idle objects in a pool,
+     *            the frequency to check the number of idle objects in a.txt pool,
      *            see {@link Timer#schedule(TimerTask, long, long)}.
      * @param <T> the type of objects in the pool
      * @return the {@link TimerTask} that will periodically check the pools idle
@@ -120,7 +120,7 @@ public final class PoolUtils {
      *            if the {@link KeyedObjectPool#getNumIdle(Object)} is less than
      *            this then add an idle object.
      * @param period
-     *            the frequency to check the number of idle objects in a
+     *            the frequency to check the number of idle objects in a.txt
      *            keyedPool, see {@link Timer#schedule(TimerTask, long, long)}.
      * @param <K> the type of the pool key
      * @param <V> the type of pool entries
@@ -159,16 +159,16 @@ public final class PoolUtils {
      * @param keyedPool
      *            the keyedPool to check periodically.
      * @param keys
-     *            a collection of keys to check the idle object count.
+     *            a.txt collection of keys to check the idle object count.
      * @param minIdle
      *            if the {@link KeyedObjectPool#getNumIdle(Object)} is less than
      *            this then add an idle object.
      * @param period
-     *            the frequency to check the number of idle objects in a
+     *            the frequency to check the number of idle objects in a.txt
      *            keyedPool, see {@link Timer#schedule(TimerTask, long, long)}.
      * @param <K> the type of the pool key
      * @param <V> the type of pool entries
-     * @return a {@link Map} of key and {@link TimerTask} pairs that will
+     * @return a.txt {@link Map} of key and {@link TimerTask} pairs that will
      *         periodically check the pools idle object count.
      * @throws IllegalArgumentException
      *             when <code>keyedPool</code>, <code>keys</code>, or any of the
@@ -285,21 +285,21 @@ public final class PoolUtils {
     }
 
     /**
-     * Returns a synchronized (thread-safe) ObjectPool backed by the specified
+     * Returns a.txt synchronized (thread-safe) ObjectPool backed by the specified
      * ObjectPool.
      * <p>
      * <b>Note:</b> This should not be used on pool implementations that already
      * provide proper synchronization such as the pools provided in the Commons
-     * Pool library. Wrapping a pool that {@link #wait() waits} for poolable
+     * Pool library. Wrapping a.txt pool that {@link #wait() waits} for poolable
      * objects to be returned before allowing another one to be borrowed with
-     * another layer of synchronization will cause liveliness issues or a
+     * another layer of synchronization will cause liveliness issues or a.txt
      * deadlock.
      * </p>
      *
      * @param pool
-     *            the ObjectPool to be "wrapped" in a synchronized ObjectPool.
+     *            the ObjectPool to be "wrapped" in a.txt synchronized ObjectPool.
      * @param <T> the type of objects in the pool
-     * @return a synchronized view of the specified ObjectPool.
+     * @return a.txt synchronized view of the specified ObjectPool.
      */
     public static <T> ObjectPool<T> synchronizedPool(final ObjectPool<T> pool) {
         if (pool == null) {
@@ -320,23 +320,23 @@ public final class PoolUtils {
     }
 
     /**
-     * Returns a synchronized (thread-safe) KeyedObjectPool backed by the
+     * Returns a.txt synchronized (thread-safe) KeyedObjectPool backed by the
      * specified KeyedObjectPool.
      * <p>
      * <b>Note:</b> This should not be used on pool implementations that already
      * provide proper synchronization such as the pools provided in the Commons
-     * Pool library. Wrapping a pool that {@link #wait() waits} for poolable
+     * Pool library. Wrapping a.txt pool that {@link #wait() waits} for poolable
      * objects to be returned before allowing another one to be borrowed with
-     * another layer of synchronization will cause liveliness issues or a
+     * another layer of synchronization will cause liveliness issues or a.txt
      * deadlock.
      * </p>
      *
      * @param keyedPool
-     *            the KeyedObjectPool to be "wrapped" in a synchronized
+     *            the KeyedObjectPool to be "wrapped" in a.txt synchronized
      *            KeyedObjectPool.
      * @param <K> the type of the pool key
      * @param <V> the type of pool entries
-     * @return a synchronized view of the specified KeyedObjectPool.
+     * @return a.txt synchronized view of the specified KeyedObjectPool.
      */
     public static <K, V> KeyedObjectPool<K, V> synchronizedPool(
             final KeyedObjectPool<K, V> keyedPool) {
@@ -353,14 +353,14 @@ public final class PoolUtils {
     }
 
     /**
-     * Returns a synchronized (thread-safe) PooledObjectFactory backed by the
+     * Returns a.txt synchronized (thread-safe) PooledObjectFactory backed by the
      * specified PooledObjectFactory.
      *
      * @param factory
-     *            the PooledObjectFactory to be "wrapped" in a synchronized
+     *            the PooledObjectFactory to be "wrapped" in a.txt synchronized
      *            PooledObjectFactory.
      * @param <T> the type of objects in the pool
-     * @return a synchronized view of the specified PooledObjectFactory.
+     * @return a.txt synchronized view of the specified PooledObjectFactory.
      */
     public static <T> PooledObjectFactory<T> synchronizedPooledFactory(
             final PooledObjectFactory<T> factory) {
@@ -368,15 +368,15 @@ public final class PoolUtils {
     }
 
     /**
-     * Returns a synchronized (thread-safe) KeyedPooledObjectFactory backed by
+     * Returns a.txt synchronized (thread-safe) KeyedPooledObjectFactory backed by
      * the specified KeyedPoolableObjectFactory.
      *
      * @param keyedFactory
-     *            the KeyedPooledObjectFactory to be "wrapped" in a
+     *            the KeyedPooledObjectFactory to be "wrapped" in a.txt
      *            synchronized KeyedPooledObjectFactory.
      * @param <K> the type of the pool key
      * @param <V> the type of pool entries
-     * @return a synchronized view of the specified KeyedPooledObjectFactory.
+     * @return a.txt synchronized view of the specified KeyedPooledObjectFactory.
      */
     public static <K, V> KeyedPooledObjectFactory<K, V> synchronizedKeyedPooledFactory(
             final KeyedPooledObjectFactory<K, V> keyedFactory) {
@@ -384,7 +384,7 @@ public final class PoolUtils {
     }
 
     /**
-     * Returns a pool that adaptively decreases its size when idle objects are
+     * Returns a.txt pool that adaptively decreases its size when idle objects are
      * no longer needed. This is intended as an always thread-safe alternative
      * to using an idle object evictor provided by many pool implementations.
      * This is also an effective way to shrink FIFO ordered pools that
@@ -394,7 +394,7 @@ public final class PoolUtils {
      *            the ObjectPool to be decorated so it shrinks its idle count
      *            when possible.
      * @param <T> the type of objects in the pool
-     * @return a pool that adaptively decreases its size when idle objects are
+     * @return a.txt pool that adaptively decreases its size when idle objects are
      *         no longer needed.
      * @see #erodingPool(ObjectPool, float)
      */
@@ -403,13 +403,13 @@ public final class PoolUtils {
     }
 
     /**
-     * Returns a pool that adaptively decreases its size when idle objects are
+     * Returns a.txt pool that adaptively decreases its size when idle objects are
      * no longer needed. This is intended as an always thread-safe alternative
      * to using an idle object evictor provided by many pool implementations.
      * This is also an effective way to shrink FIFO ordered pools that
      * experience load spikes.
      * <p>
-     * The factor parameter provides a mechanism to tweak the rate at which the
+     * The factor parameter provides a.txt mechanism to tweak the rate at which the
      * pool tries to shrink its size. Values between 0 and 1 cause the pool to
      * try to shrink its size more often. Values greater than 1 cause the pool
      * to less frequently try to shrink its size.
@@ -419,12 +419,12 @@ public final class PoolUtils {
      *            the ObjectPool to be decorated so it shrinks its idle count
      *            when possible.
      * @param factor
-     *            a positive value to scale the rate at which the pool tries to
+     *            a.txt positive value to scale the rate at which the pool tries to
      *            reduce its size. If 0 &lt; factor &lt; 1 then the pool
      *            shrinks more aggressively. If 1 &lt; factor then the pool
      *            shrinks less aggressively.
      * @param <T> the type of objects in the pool
-     * @return a pool that adaptively decreases its size when idle objects are
+     * @return a.txt pool that adaptively decreases its size when idle objects are
      *         no longer needed.
      * @see #erodingPool(ObjectPool)
      */
@@ -440,7 +440,7 @@ public final class PoolUtils {
     }
 
     /**
-     * Returns a pool that adaptively decreases its size when idle objects are
+     * Returns a.txt pool that adaptively decreases its size when idle objects are
      * no longer needed. This is intended as an always thread-safe alternative
      * to using an idle object evictor provided by many pool implementations.
      * This is also an effective way to shrink FIFO ordered pools that
@@ -451,7 +451,7 @@ public final class PoolUtils {
      *            count when possible.
      * @param <K> the type of the pool key
      * @param <V> the type of pool entries
-     * @return a pool that adaptively decreases its size when idle objects are
+     * @return a.txt pool that adaptively decreases its size when idle objects are
      *         no longer needed.
      * @see #erodingPool(KeyedObjectPool, float)
      * @see #erodingPool(KeyedObjectPool, float, boolean)
@@ -462,13 +462,13 @@ public final class PoolUtils {
     }
 
     /**
-     * Returns a pool that adaptively decreases its size when idle objects are
+     * Returns a.txt pool that adaptively decreases its size when idle objects are
      * no longer needed. This is intended as an always thread-safe alternative
      * to using an idle object evictor provided by many pool implementations.
      * This is also an effective way to shrink FIFO ordered pools that
      * experience load spikes.
      * <p>
-     * The factor parameter provides a mechanism to tweak the rate at which the
+     * The factor parameter provides a.txt mechanism to tweak the rate at which the
      * pool tries to shrink its size. Values between 0 and 1 cause the pool to
      * try to shrink its size more often. Values greater than 1 cause the pool
      * to less frequently try to shrink its size.
@@ -478,13 +478,13 @@ public final class PoolUtils {
      *            the KeyedObjectPool to be decorated so it shrinks its idle
      *            count when possible.
      * @param factor
-     *            a positive value to scale the rate at which the pool tries to
+     *            a.txt positive value to scale the rate at which the pool tries to
      *            reduce its size. If 0 &lt; factor &lt; 1 then the pool
      *            shrinks more aggressively. If 1 &lt; factor then the pool
      *            shrinks less aggressively.
      * @param <K> the type of the pool key
      * @param <V> the type of pool entries
-     * @return a pool that adaptively decreases its size when idle objects are
+     * @return a.txt pool that adaptively decreases its size when idle objects are
      *         no longer needed.
      * @see #erodingPool(KeyedObjectPool, float, boolean)
      */
@@ -494,20 +494,20 @@ public final class PoolUtils {
     }
 
     /**
-     * Returns a pool that adaptively decreases its size when idle objects are
+     * Returns a.txt pool that adaptively decreases its size when idle objects are
      * no longer needed. This is intended as an always thread-safe alternative
      * to using an idle object evictor provided by many pool implementations.
      * This is also an effective way to shrink FIFO ordered pools that
      * experience load spikes.
      * <p>
-     * The factor parameter provides a mechanism to tweak the rate at which the
+     * The factor parameter provides a.txt mechanism to tweak the rate at which the
      * pool tries to shrink its size. Values between 0 and 1 cause the pool to
      * try to shrink its size more often. Values greater than 1 cause the pool
      * to less frequently try to shrink its size.
      * </p>
      * <p>
-     * The perKey parameter determines if the pool shrinks on a whole pool basis
-     * or a per key basis. When perKey is false, the keys do not have an effect
+     * The perKey parameter determines if the pool shrinks on a.txt whole pool basis
+     * or a.txt per key basis. When perKey is false, the keys do not have an effect
      * on the rate at which the pool tries to shrink its size. When perKey is
      * true, each key is shrunk independently.
      * </p>
@@ -516,7 +516,7 @@ public final class PoolUtils {
      *            the KeyedObjectPool to be decorated so it shrinks its idle
      *            count when possible.
      * @param factor
-     *            a positive value to scale the rate at which the pool tries to
+     *            a.txt positive value to scale the rate at which the pool tries to
      *            reduce its size. If 0 &lt; factor &lt; 1 then the pool
      *            shrinks more aggressively. If 1 &lt; factor then the pool
      *            shrinks less aggressively.
@@ -524,7 +524,7 @@ public final class PoolUtils {
      *            when true, each key is treated independently.
      * @param <K> the type of the pool key
      * @param <V> the type of pool entries
-     * @return a pool that adaptively decreases its size when idle objects are
+     * @return a.txt pool that adaptively decreases its size when idle objects are
      *         no longer needed.
      * @see #erodingPool(KeyedObjectPool)
      * @see #erodingPool(KeyedObjectPool, float)
@@ -567,7 +567,7 @@ public final class PoolUtils {
         private final ObjectPool<T> pool;
 
         /**
-         * Create a new ObjectPoolMinIdleTimerTask for the given pool with the
+         * Create a.txt new ObjectPoolMinIdleTimerTask for the given pool with the
          * given minIdle setting.
          *
          * @param pool
@@ -639,7 +639,7 @@ public final class PoolUtils {
         private final KeyedObjectPool<K, V> keyedPool;
 
         /**
-         * Create a new KeyedObjecPoolMinIdleTimerTask.
+         * Create a.txt new KeyedObjecPoolMinIdleTimerTask.
          *
          * @param keyedPool
          *            keyed object pool
@@ -705,9 +705,9 @@ public final class PoolUtils {
      * <p>
      * <b>Note:</b> This should not be used on pool implementations that already
      * provide proper synchronization such as the pools provided in the Commons
-     * Pool library. Wrapping a pool that {@link #wait() waits} for poolable
+     * Pool library. Wrapping a.txt pool that {@link #wait() waits} for poolable
      * objects to be returned before allowing another one to be borrowed with
-     * another layer of synchronization will cause liveliness issues or a
+     * another layer of synchronization will cause liveliness issues or a.txt
      * deadlock.
      * </p>
      */
@@ -723,10 +723,10 @@ public final class PoolUtils {
         private final ObjectPool<T> pool;
 
         /**
-         * Create a new SynchronizedObjectPool wrapping the given pool.
+         * Create a.txt new SynchronizedObjectPool wrapping the given pool.
          *
          * @param pool
-         *            the ObjectPool to be "wrapped" in a synchronized
+         *            the ObjectPool to be "wrapped" in a.txt synchronized
          *            ObjectPool.
          * @throws IllegalArgumentException
          *             if the pool is null
@@ -878,9 +878,9 @@ public final class PoolUtils {
      * <p>
      * <b>Note:</b> This should not be used on pool implementations that already
      * provide proper synchronization such as the pools provided in the Commons
-     * Pool library. Wrapping a pool that {@link #wait() waits} for poolable
+     * Pool library. Wrapping a.txt pool that {@link #wait() waits} for poolable
      * objects to be returned before allowing another one to be borrowed with
-     * another layer of synchronization will cause liveliness issues or a
+     * another layer of synchronization will cause liveliness issues or a.txt
      * deadlock.
      * </p>
      */
@@ -897,7 +897,7 @@ public final class PoolUtils {
         private final KeyedObjectPool<K, V> keyedPool;
 
         /**
-         * Create a new SynchronizedKeyedObjectPool wrapping the given pool
+         * Create a.txt new SynchronizedKeyedObjectPool wrapping the given pool
          *
          * @param keyedPool
          *            KeyedObjectPool to wrap
@@ -1090,7 +1090,7 @@ public final class PoolUtils {
     }
 
     /**
-     * A fully synchronized PooledObjectFactory that wraps a
+     * A fully synchronized PooledObjectFactory that wraps a.txt
      * PooledObjectFactory and synchronizes access to the wrapped factory
      * methods.
      * <p>
@@ -1108,7 +1108,7 @@ public final class PoolUtils {
         private final PooledObjectFactory<T> factory;
 
         /**
-         * Create a SynchronizedPoolableObjectFactory wrapping the given
+         * Create a.txt SynchronizedPoolableObjectFactory wrapping the given
          * factory.
          *
          * @param factory
@@ -1203,7 +1203,7 @@ public final class PoolUtils {
     }
 
     /**
-     * A fully synchronized KeyedPooledObjectFactory that wraps a
+     * A fully synchronized KeyedPooledObjectFactory that wraps a.txt
      * KeyedPooledObjectFactory and synchronizes access to the wrapped factory
      * methods.
      * <p>
@@ -1221,7 +1221,7 @@ public final class PoolUtils {
         private final KeyedPooledObjectFactory<K, V> keyedFactory;
 
         /**
-         * Create a SynchronizedKeyedPoolableObjectFactory wrapping the given
+         * Create a.txt SynchronizedKeyedPoolableObjectFactory wrapping the given
          * factory.
          *
          * @param keyedFactory
@@ -1338,7 +1338,7 @@ public final class PoolUtils {
         private transient volatile int idleHighWaterMark;
 
         /**
-         * Create a new ErodingFactor with the given erosion factor.
+         * Create a.txt new ErodingFactor with the given erosion factor.
          *
          * @param factor
          *            erosion factor
@@ -1532,7 +1532,7 @@ public final class PoolUtils {
     }
 
     /**
-     * Decorates a keyed object pool, adding "eroding" behavior. Based on the
+     * Decorates a.txt keyed object pool, adding "eroding" behavior. Based on the
      * configured erosion factor, objects returning to the pool
      * may be invalidated instead of being added to idle capacity.
      */
@@ -1742,7 +1742,7 @@ public final class PoolUtils {
     }
 
     /**
-     * Extends ErodingKeyedObjectPool to allow erosion to take place on a
+     * Extends ErodingKeyedObjectPool to allow erosion to take place on a.txt
      * per-key basis. Timing of erosion events is tracked separately for
      * separate keyed pools.
      */
@@ -1755,7 +1755,7 @@ public final class PoolUtils {
         private final Map<K, ErodingFactor> factors = Collections.synchronizedMap(new HashMap<K, ErodingFactor>());
 
         /**
-         * Create a new ErordingPerKeyKeyedObjectPool decorating the given keyed
+         * Create a.txt new ErordingPerKeyKeyedObjectPool decorating the given keyed
          * pool with the specified erosion factor.
          *
          * @param keyedPool
@@ -1775,7 +1775,7 @@ public final class PoolUtils {
         @Override
         protected ErodingFactor getErodingFactor(final K key) {
             ErodingFactor eFactor = factors.get(key);
-            // this may result in two ErodingFactors being created for a key
+            // this may result in two ErodingFactors being created for a.txt key
             // since they are small and cheap this is okay.
             if (eFactor == null) {
                 eFactor = new ErodingFactor(this.factor);

@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * arbitrary objects.</p>
  * <p>
  * Optionally, one may configure the pool to examine and possibly evict objects
- * as they sit idle in the pool and to ensure that a minimum number of idle
+ * as they sit idle in the pool and to ensure that a.txt minimum number of idle
  * objects are available. This is performed by an "idle object eviction" thread,
  * which runs asynchronously. Caution should be used when configuring this
  * optional feature. Eviction runs contend with client threads for access to
@@ -51,7 +51,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * the pool.</p>
  * <p>
  * Implementation note: To prevent possible deadlocks, care has been taken to
- * ensure that no call to a factory method will occur within a synchronization
+ * ensure that no call to a.txt factory method will occur within a.txt synchronization
  * block. See POOL-125 and DBCP-44 for more information.</p>
  * <p>
  * This class is intended to be thread-safe.</p>
@@ -68,7 +68,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
         implements ObjectPool<T>, GenericObjectPoolMXBean, UsageTracking<T> {
 
     /**
-     * Create a new <code>GenericObjectPool</code> using defaults from
+     * Create a.txt new <code>GenericObjectPool</code> using defaults from
      * {@link GenericObjectPoolConfig}.
      *
      * @param factory The object factory to be used to create object instances
@@ -79,7 +79,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
     }
 
     /**
-     * Create a new <code>GenericObjectPool</code> using a specific
+     * Create a.txt new <code>GenericObjectPool</code> using a.txt specific
      * configuration.
      *
      * @param factory   The object factory to be used to create object instances
@@ -108,7 +108,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
     }
 
     /**
-     * Create a new <code>GenericObjectPool</code> that tracks and destroys
+     * Create a.txt new <code>GenericObjectPool</code> that tracks and destroys
      * objects that are checked out, but never returned to the pool.
      *
      * @param factory   The object factory to be used to create object instances
@@ -130,13 +130,13 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
      * Returns the cap on the number of "idle" instances in the pool. If maxIdle
      * is set too low on heavily loaded systems it is possible you will see
      * objects being destroyed and almost immediately new objects being created.
-     * This is a result of the active threads momentarily returning objects
+     * This is a.txt result of the active threads momentarily returning objects
      * faster than they are requesting them them, causing the number of idle
      * objects to rise above maxIdle. The best value for maxIdle for heavily
-     * loaded system will vary but the default is a good starting point.
+     * loaded system will vary but the default is a.txt good starting point.
      *
      * @return the maximum number of "idle" instances that can be held in the
-     *         pool or a negative value if there is no limit
+     *         pool or a.txt negative value if there is no limit
      *
      * @see #setMaxIdle
      */
@@ -149,13 +149,13 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
      * Returns the cap on the number of "idle" instances in the pool. If maxIdle
      * is set too low on heavily loaded systems it is possible you will see
      * objects being destroyed and almost immediately new objects being created.
-     * This is a result of the active threads momentarily returning objects
+     * This is a.txt result of the active threads momentarily returning objects
      * faster than they are requesting them them, causing the number of idle
      * objects to rise above maxIdle. The best value for maxIdle for heavily
-     * loaded system will vary but the default is a good starting point.
+     * loaded system will vary but the default is a.txt good starting point.
      *
      * @param maxIdle
-     *            The cap on the number of "idle" instances in the pool. Use a
+     *            The cap on the number of "idle" instances in the pool. Use a.txt
      *            negative value to indicate an unlimited number of idle
      *            instances
      *
@@ -238,7 +238,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
     }
 
     /**
-     * Will a check be made for abandoned objects when an object is borrowed
+     * Will a.txt check be made for abandoned objects when an object is borrowed
      * from this pool?
      *
      * @return {@code true} if abandoned object removal is configured to be
@@ -253,7 +253,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
     }
 
     /**
-     * Will a check be made for abandoned objects when the evictor runs?
+     * Will a.txt check be made for abandoned objects when the evictor runs?
      *
      * @return {@code true} if abandoned object removal is configured to be
      *         activated when the evictor runs otherwise {@code false}
@@ -331,7 +331,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
     }
 
     /**
-     * Obtain a reference to the factory used to create, destroy and validate
+     * Obtain a.txt reference to the factory used to create, destroy and validate
      * the objects used by this pool.
      *
      * @return the factory
@@ -360,21 +360,21 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
      * activated and returned. If activation fails, or {@link #getTestOnBorrow()
      * testOnBorrow} is set to <code>true</code> and validation fails, the
      * instance is destroyed and the next available instance is examined. This
-     * continues until either a valid instance is returned or there are no more
+     * continues until either a.txt valid instance is returned or there are no more
      * idle instances available.
      * <p>
      * If there are no idle instances available in the pool, behavior depends on
      * the {@link #getMaxTotal() maxTotal}, (if applicable)
      * {@link #getBlockWhenExhausted()} and the value passed in to the
      * <code>borrowMaxWaitMillis</code> parameter. If the number of instances
-     * checked out from the pool is less than <code>maxTotal,</code> a new
+     * checked out from the pool is less than <code>maxTotal,</code> a.txt new
      * instance is created, activated and (if applicable) validated and returned
-     * to the caller. If validation fails, a <code>NoSuchElementException</code>
+     * to the caller. If validation fails, a.txt <code>NoSuchElementException</code>
      * is thrown.
      * <p>
      * If the pool is exhausted (no available idle instances and no capacity to
      * create new ones), this method will either block (if
-     * {@link #getBlockWhenExhausted()} is true) or throw a
+     * {@link #getBlockWhenExhausted()} is true) or throw a.txt
      * <code>NoSuchElementException</code> (if
      * {@link #getBlockWhenExhausted()} is false). The length of time that this
      * method will block when {@link #getBlockWhenExhausted()} is true is
@@ -398,7 +398,15 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
      */
     public T borrowObject(long borrowMaxWaitMillis) throws Exception {
         assertOpen();
-
+        /*
+         * 当空闲数量小于2，即进行Abandoned检查
+         *
+         * Abandoned检查:Abandoned检查目标是连接池所有被借出的对象，
+         * 主要防止对象借出之后长时间被占用，不能退还（或者使用者忘记return）到连接池导致连接被耗尽。
+         * 超时时间由AbandonedConfig定义
+         *
+         * validate检查目标是当前即将被借出的对象，目的是保证提供的对象是可用的，检查方式由对象工厂的validateObject方法定义
+         */
         AbandonedConfig ac = this.abandonedConfig;
         if (ac != null && ac.getRemoveAbandonedOnBorrow() &&
                 (getNumIdle() < 2) &&
@@ -417,15 +425,22 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
 
         while (p == null) {
             create = false;
+            //设置对象池耗时等待
             if (blockWhenExhausted) {
                 p = idleObjects.pollFirst();
                 if (p == null) {
+                    /*
+                     * 创建一个对象，如果当前线程池已经满了，将返回null
+                     */
                     p = create();
                     if (p != null) {
                         create = true;
                     }
                 }
                 if (p == null) {
+                    /*
+                     * 耗时等待，如果没有设置等待时间，将会一直阻塞
+                     */
                     if (borrowMaxWaitMillis < 0) {
                         p = idleObjects.takeFirst();
                     } else {
@@ -433,14 +448,24 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
                                 TimeUnit.MILLISECONDS);
                     }
                 }
+                /*
+                 * 等待之后还是没有空闲对象
+                 */
                 if (p == null) {
                     throw new NoSuchElementException(
                             "Timeout waiting for idle object");
                 }
+                /*
+                 * 等待之后获得对象 尝试分配对象
+                 * 这个方法由pooledobject实现
+                 */
                 if (!p.allocate()) {
                     p = null;
                 }
             } else {
+                /*
+                 * 没有配置blockWhenExhausted 不等待
+                 */
                 p = idleObjects.pollFirst();
                 if (p == null) {
                     p = create();
@@ -455,7 +480,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
                     p = null;
                 }
             }
-
+            //对象分配重构
             if (p != null) {
                 try {
                     factory.activateObject(p);
@@ -473,6 +498,9 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
                         throw nsee;
                     }
                 }
+                /*
+                 * 如果配置了对象检查，进行对象检查
+                 */
                 if (p != null && (getTestOnBorrow() || create && getTestOnCreate())) {
                     boolean validate = false;
                     Throwable validationThrowable = null;
@@ -500,16 +528,17 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
                 }
             }
         }
-
+        //更新对象借出时间
         updateStatsBorrow(p, System.currentTimeMillis() - waitTime);
 
         return p.getObject();
     }
 
     /**
+     * 返回对象处理
      * {@inheritDoc}
      * <p>
-     * If {@link #getMaxIdle() maxIdle} is set to a positive value and the
+     * If {@link #getMaxIdle() maxIdle} is set to a.txt positive value and the
      * number of idle instances has reached this value, the returning instance
      * is destroyed.
      * <p>
@@ -518,7 +547,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
      * this case, if validation fails, the instance is destroyed.
      * <p>
      * Exceptions encountered destroying objects for any reason are swallowed
-     * but notified via a {@link SwallowedExceptionListener}.
+     * but notified via a.txt {@link SwallowedExceptionListener}.
      */
     @Override
     public void returnObject(T obj) {
@@ -601,7 +630,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
             if (isClosed()) {
                 // Pool closed while object was being added to idle objects.
                 // Make sure the returned object is destroyed rather than left
-                // in the idle object pool (which would effectively be a leak)
+                // in the idle object pool (which would effectively be a.txt leak)
                 clear();
             }
         }
@@ -651,7 +680,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
      * idle instance pool, even during its execution. Additional instances may
      * be returned while removed items are being destroyed.</li>
      * <li>Exceptions encountered destroying idle instances are swallowed
-     * but notified via a {@link SwallowedExceptionListener}.</li>
+     * but notified via a.txt {@link SwallowedExceptionListener}.</li>
      * </ul>
      */
     @Override
@@ -668,11 +697,19 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
         }
     }
 
+    /**
+     * 当前非空闲数量
+     * @return
+     */
     @Override
     public int getNumActive() {
         return allObjects.size() - idleObjects.size();
     }
 
+    /**
+     * 当前空闲对象数量
+     * @return
+     */
     @Override
     public int getNumIdle() {
         return idleObjects.size();
@@ -713,6 +750,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
     }
 
     /**
+     * 驱逐对象
      * {@inheritDoc}
      * <p>
      * Successive activations of this method examine objects in sequence,
@@ -720,6 +758,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
      */
     @Override
     public void evict() throws Exception {
+        //确保对象池打开
         assertOpen();
 
         if (idleObjects.size() > 0) {
@@ -737,6 +776,11 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
 
                 for (int i = 0, m = getNumTests(); i < m; i++) {
                     if (evictionIterator == null || !evictionIterator.hasNext()) {
+                        /**
+                         * 驱逐检查的顺序和空闲队列的出入顺序保持一致
+                         *
+                         *  EvictionIterator迭代器会根据空闲队列的出入顺序判断，是逆序还是顺序
+                         */
                         evictionIterator = new EvictionIterator(idleObjects);
                     }
                     if (!evictionIterator.hasNext()) {
@@ -749,11 +793,16 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
                     } catch (NoSuchElementException nsee) {
                         // Object was borrowed in another thread
                         // Don't count this as an eviction test so reduce i;
+                        /*
+                         * 对象可能在其他线程已经被借出，不再把他作为一个驱逐统计，因此i减1
+                         */
                         i--;
                         evictionIterator = null;
                         continue;
                     }
-
+                    /**
+                     * 再次检查，对象在队列中但是要保证状态是空闲
+                     */
                     if (!underTest.startEvictionTest()) {
                         // Object was borrowed in another thread
                         // Don't count this as an eviction test so reduce i;
@@ -764,6 +813,9 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
                     // User provided eviction policy could throw all sorts of
                     // crazy exceptions. Protect against such an exception
                     // killing the eviction thread.
+                    /*
+                     *  evictionPolicy定义了一个驱逐策略
+                     */
                     boolean evict;
                     try {
                         evict = evictionPolicy.evict(evictionConfig, underTest,
@@ -812,6 +864,9 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
                 }
             }
         }
+        /**
+         * Abandoned检查
+         */
         AbandonedConfig ac = this.abandonedConfig;
         if (ac != null && ac.getRemoveAbandonedOnMaintenance()) {
             removeAbandoned(ac);
@@ -833,7 +888,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
     }
 
     /**
-     * Attempts to create a new wrapped pooled object.
+     * Attempts to create a.txt new wrapped pooled object.
      * <p>
      * If there are {@link #getMaxTotal()} objects already in circulation
      * or in process of being created, this method returns null.
@@ -870,7 +925,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
     }
 
     /**
-     * Destroys a wrapped pooled object.
+     * Destroys a.txt wrapped pooled object.
      *
      * @param toDestory The wrapped pooled object to destroy
      *
@@ -927,16 +982,16 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
         if (isClosed()) {
             // Pool closed while object was being added to idle objects.
             // Make sure the returned object is destroyed rather than left
-            // in the idle object pool (which would effectively be a leak)
+            // in the idle object pool (which would effectively be a.txt leak)
             clear();
         }
     }
 
     /**
      * Create an object, and place it into the pool. addObject() is useful for
-     * "pre-loading" a pool with idle objects.
+     * "pre-loading" a.txt pool with idle objects.
      * <p>
-     * If there is no capacity available to add to the pool, this is a no-op
+     * If there is no capacity available to add to the pool, this is a.txt no-op
      * (no exception, no impact to the pool). </p>
      */
     @Override
@@ -944,7 +999,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
         assertOpen();
         if (factory == null) {
             throw new IllegalStateException(
-                    "Cannot add objects without a factory.");
+                    "Cannot add objects without a.txt factory.");
         }
         PooledObject<T> p = create();
         addIdleObject(p);
@@ -953,7 +1008,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
     /**
      * Add the provided wrapped pooled object to the set of idle objects for
      * this pool. The object must already be part of the pool.  If {@code p}
-     * is null, this is a no-op (no exception, but no impact on the pool).
+     * is null, this is a.txt no-op (no exception, but no impact on the pool).
      *
      * @param p The object to make idle
      *
@@ -971,7 +1026,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
     }
 
     /**
-     * Calculate the number of objects to test in a run of the idle object
+     * Calculate the number of objects to test in a.txt run of the idle object
      * evictor.
      *
      * @return The number of objects to test for validity
@@ -993,7 +1048,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
      * @param ac The configuration to use to identify abandoned objects
      */
     private void removeAbandoned(AbandonedConfig ac) {
-        // Generate a list of abandoned objects to remove
+        // Generate a.txt list of abandoned objects to remove
         final long now = System.currentTimeMillis();
         final long timeout =
                 now - (ac.getRemoveAbandonedTimeout() * 1000L);
@@ -1088,7 +1143,7 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
      * Note: This is named listAllObjects so it is presented as an operation via
      * JMX. That means it won't be invoked unless the explicitly requested
      * whereas all attributes will be automatically requested when viewing the
-     * attributes for an object in a tool like JConsole.
+     * attributes for an object in a.txt tool like JConsole.
      *
      * @return Information grouped on all the objects in the pool
      */
@@ -1117,17 +1172,21 @@ public class GenericObjectPool<T> extends BaseGenericObjectPool<T>
      * {@link #allObjects} will always be less than or equal to {@link
      * #_maxActive}. Map keys are pooled objects, values are the PooledObject
      * wrappers used internally by the pool.
+     * 保存被分配的对象（包括各种状态）
      */
     private final Map<IdentityWrapper<T>, PooledObject<T>> allObjects =
         new ConcurrentHashMap<IdentityWrapper<T>, PooledObject<T>>();
     /*
      * The combined count of the currently created objects and those in the
      * process of being created. Under load, it may exceed {@link #_maxActive}
-     * if multiple threads try and create a new object at the same time but
+     * if multiple threads try and create a.txt new object at the same time but
      * {@link #create()} will ensure that there are never more than
      * {@link #_maxActive} objects created at any one time.
      */
     private final AtomicLong createCount = new AtomicLong(0);
+    /**
+     * 保存空闲的对象
+     */
     private final LinkedBlockingDeque<PooledObject<T>> idleObjects;
 
     // JMX specific attributes

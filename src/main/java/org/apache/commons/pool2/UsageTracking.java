@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -30,7 +30,7 @@ package org.apache.commons.pool2;
 public interface UsageTracking<T> {
 
     /**
-     * This method is called every time a pooled object to enable the pool to
+     * This method is called every time a.txt pooled object to enable the pool to
      * better track borrowed objects.
      *
      * @param pooledObject  The object that is being used

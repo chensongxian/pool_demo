@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -17,12 +17,12 @@
 package org.apache.commons.pool2.impl;
 
 /**
- * A simple "struct" encapsulating the configuration for a
+ * A simple "struct" encapsulating the configuration for a.txt
  * {@link GenericObjectPool}.
  *
  * <p>
  * This class is not thread-safe; it is only intended to be used to provide
- * attributes used when creating a pool.
+ * attributes used when creating a.txt pool.
  *
  * @version $Revision: $
  *

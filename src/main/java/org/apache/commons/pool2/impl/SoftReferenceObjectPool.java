@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -71,7 +71,7 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
         new ArrayList<PooledSoftReference<T>>();
 
     /**
-     * Create a <code>SoftReferenceObjectPool</code> with the specified factory.
+     * Create a.txt <code>SoftReferenceObjectPool</code> with the specified factory.
      *
      * @param factory object factory to use.
      */
@@ -82,7 +82,7 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
     /**
      * Borrow an object from the pool. If there are no idle instances available
      * in the pool, the configured factory's
-     * {@link PooledObjectFactory#makeObject()} method is invoked to create a
+     * {@link PooledObjectFactory#makeObject()} method is invoked to create a.txt
      * new instance.
      * <p>
      * All instances are {@link PooledObjectFactory#activateObject(
@@ -97,7 +97,7 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
      * activated. This process continues until either the pool is empty or an
      * instance passes validation. If the pool is empty on activation or it does
      * not contain any valid instances, the factory's <code>makeObject</code>
-     * method is used to create a new instance. If the created instance either
+     * method is used to create a.txt new instance. If the created instance either
      * raises an exception on activation or fails validation,
      * <code>NoSuchElementException</code> is thrown. Exceptions thrown by
      * <code>MakeObject</code> are propagated to the caller; but other than
@@ -106,12 +106,12 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
      * silently.
      *
      * @throws NoSuchElementException
-     *             if a valid object cannot be provided
+     *             if a.txt valid object cannot be provided
      * @throws IllegalStateException
-     *             if invoked on a {@link #close() closed} pool
+     *             if invoked on a.txt {@link #close() closed} pool
      * @throws Exception
-     *             if an exception occurs creating a new instance
-     * @return a valid, activated object instance
+     *             if an exception occurs creating a.txt new instance
+     * @return a.txt valid, activated object instance
      */
     @SuppressWarnings("null") // ref can not be null
     @Override
@@ -135,8 +135,8 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
             } else {
                 ref = idleReferences.pollFirst();
                 obj = ref.getObject();
-                // Clear the reference so it will not be queued, but replace with a
-                // a new, non-registered reference so we can still track this object
+                // Clear the reference so it will not be queued, but replace with a.txt
+                // a.txt new, non-registered reference so we can still track this object
                 // in allReferences
                 ref.getReference().clear();
                 ref.setReference(new SoftReference<T>(obj));
@@ -159,7 +159,7 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
                     }
                     if (newlyCreated) {
                         throw new NoSuchElementException(
-                                "Could not create a validated object, cause: " +
+                                "Could not create a.txt validated object, cause: " +
                                         t.getMessage());
                     }
                 }
@@ -247,7 +247,7 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
 
     /**
      * Create an object, and place it into the pool. addObject() is useful for
-     * "pre-loading" a pool with idle objects.
+     * "pre-loading" a.txt pool with idle objects.
      * <p>
      * Before being added to the pool, the newly created instance is
      * {@link PooledObjectFactory#validateObject(
@@ -262,9 +262,9 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
      * destroying instances are silently swallowed.
      *
      * @throws IllegalStateException
-     *             if invoked on a {@link #close() closed} pool
+     *             if invoked on a.txt {@link #close() closed} pool
      * @throws Exception
-     *             when the {@link #getFactory() factory} has a problem creating
+     *             when the {@link #getFactory() factory} has a.txt problem creating
      *             or passivating an object.
      */
     @Override
@@ -272,7 +272,7 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
         assertOpen();
         if (factory == null) {
             throw new IllegalStateException(
-                    "Cannot add objects without a factory.");
+                    "Cannot add objects without a.txt factory.");
         }
         T obj = factory.makeObject().getObject();
         createCount++;
@@ -352,7 +352,7 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
      * {@link #clear()} to destroy and remove instances in the pool.
      * <p>
      * Calling {@link #addObject} or {@link #borrowObject} after invoking this
-     * method on a pool will cause them to throw an
+     * method on a.txt pool will cause them to throw an
      * {@link IllegalStateException}.
      */
     @Override
@@ -386,7 +386,7 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
      * Find the PooledSoftReference in allReferences that points to obj.
      *
      * @param obj returning object
-     * @return PooledSoftReference wrapping a soft reference to obj
+     * @return PooledSoftReference wrapping a.txt soft reference to obj
      */
     private PooledSoftReference<T> findReference(T obj) {
         Iterator<PooledSoftReference<T>> iterator = allReferences.iterator();
@@ -400,7 +400,7 @@ public class SoftReferenceObjectPool<T> extends BaseObjectPool<T> {
     }
 
     /**
-     * Destroy a {@code PooledSoftReference} and remove it from the idle and all
+     * Destroy a.txt {@code PooledSoftReference} and remove it from the idle and all
      * references pools.
      *
      * @param toDestroy PooledSoftReference to destroy

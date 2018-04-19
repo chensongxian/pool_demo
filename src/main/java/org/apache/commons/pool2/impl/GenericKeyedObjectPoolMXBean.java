@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -26,7 +26,7 @@ import java.util.Map;
  *       will be made available via JMX. It must not be implemented by clients
  *       as it is subject to change between major, minor and patch version
  *       releases of commons pool. Clients that implement this interface may
- *       not, therefore, be able to upgrade to a new minor or patch release
+ *       not, therefore, be able to upgrade to a.txt new minor or patch release
  *       without requiring code changes.
  *
  * @param <K> The type of keys maintained by the pool.

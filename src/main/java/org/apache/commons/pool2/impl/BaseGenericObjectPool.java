@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -87,9 +87,9 @@ public abstract class BaseGenericObjectPool<T> {
     private Evictor evictor = null; // @GuardedBy("evictionLock")
     EvictionIterator evictionIterator = null; // @GuardedBy("evictionLock")
     /*
-     * Class loader for evictor thread to use since, in a JavaEE or similar
+     * Class loader for evictor thread to use since, in a.txt JavaEE or similar
      * environment, the context class loader for the evictor thread may not have
-     * visibility of the correct factory. See POOL-161. Uses a weak reference to
+     * visibility of the correct factory. See POOL-161. Uses a.txt weak reference to
      * avoid potential memory leaks if the Pool is discarded rather than closed.
      */
     private final WeakReference<ClassLoader> factoryClassLoader;
@@ -144,8 +144,9 @@ public abstract class BaseGenericObjectPool<T> {
 
 
     /**
+     * 对象池容量
      * Returns the maximum number of objects that can be allocated by the pool
-     * (checked out to clients, or idle awaiting checkout) at a given time. When
+     * (checked out to clients, or idle awaiting checkout) at a.txt given time. When
      * negative, there is no limit to the number of objects that can be
      * managed by the pool at one time.
      *
@@ -160,8 +161,8 @@ public abstract class BaseGenericObjectPool<T> {
 
     /**
      * Sets the cap on the number of objects that can be allocated by the pool
-     * (checked out to clients, or idle awaiting checkout) at a given time. Use
-     * a negative value for no limit.
+     * (checked out to clients, or idle awaiting checkout) at a.txt given time. Use
+     * a.txt negative value for no limit.
      *
      * @param maxTotal  The cap on the total number of object instances managed
      *                  by the pool. Negative values mean that there is no limit
@@ -240,7 +241,7 @@ public abstract class BaseGenericObjectPool<T> {
     /**
      * Returns whether the pool has LIFO (last in, first out) behaviour with
      * respect to idle objects - always returning the most recently used object
-     * from the pool, or as a FIFO (first in, first out) queue, where the pool
+     * from the pool, or as a.txt FIFO (first in, first out) queue, where the pool
      * always returns the oldest object in the idle object pool.
      *
      * @return <code>true</code> if the pool is configured with LIFO behaviour
@@ -255,7 +256,7 @@ public abstract class BaseGenericObjectPool<T> {
 
     /**
      * Returns whether or not the pool serves threads waiting to borrow objects fairly.
-     * True means that waiting threads are served as if waiting in a FIFO queue.
+     * True means that waiting threads are served as if waiting in a.txt FIFO queue.
      *
      * @return <code>true</code> if waiting threads are to be served
      *             by the pool in arrival order
@@ -267,7 +268,7 @@ public abstract class BaseGenericObjectPool<T> {
     /**
      * Sets whether the pool has LIFO (last in, first out) behaviour with
      * respect to idle objects - always returning the most recently used object
-     * from the pool, or as a FIFO (first in, first out) queue, where the pool
+     * from the pool, or as a.txt FIFO (first in, first out) queue, where the pool
      * always returns the oldest object in the idle object pool.
      *
      * @param lifo  <code>true</code> if the pool is to be configured with LIFO
@@ -322,7 +323,7 @@ public abstract class BaseGenericObjectPool<T> {
      * being returned from the <code>borrowObject()</code> method. Validation is
      * performed by the <code>validateObject()</code> method of the factory
      * associated with the pool. If the object fails to validate, it will be
-     * removed from the pool and destroyed, and a new attempt will be made to
+     * removed from the pool and destroyed, and a.txt new attempt will be made to
      * borrow an object from the pool.
      *
      * @return <code>true</code> if objects are validated before being returned
@@ -339,7 +340,7 @@ public abstract class BaseGenericObjectPool<T> {
      * being returned from the <code>borrowObject()</code> method. Validation is
      * performed by the <code>validateObject()</code> method of the factory
      * associated with the pool. If the object fails to validate, it will be
-     * removed from the pool and destroyed, and a new attempt will be made to
+     * removed from the pool and destroyed, and a.txt new attempt will be made to
      * borrow an object from the pool.
      *
      * @param testOnBorrow  <code>true</code> if objects should be validated
@@ -410,7 +411,7 @@ public abstract class BaseGenericObjectPool<T> {
      * with the pool. If the object fails to validate, it will be removed from
      * the pool and destroyed.  Note that setting this property has no effect
      * unless the idle object evictor is enabled by setting
-     * <code>timeBetweenEvictionRunsMillis</code> to a positive value.
+     * <code>timeBetweenEvictionRunsMillis</code> to a.txt positive value.
      *
      * @param testWhileIdle
      *            <code>true</code> so objects will be validated by the evictor
@@ -454,7 +455,7 @@ public abstract class BaseGenericObjectPool<T> {
     /**
      * Returns the maximum number of objects to examine during each run (if any)
      * of the idle object evictor thread. When positive, the number of tests
-     * performed for a run will be the minimum of the configured value and the
+     * performed for a.txt run will be the minimum of the configured value and the
      * number of idle instances in the pool. When negative, the number of tests
      * performed will be <code>ceil({@link #getNumIdle}/
      * abs({@link #getNumTestsPerEvictionRun}))</code> which means that when the
@@ -473,7 +474,7 @@ public abstract class BaseGenericObjectPool<T> {
     /**
      * Sets the maximum number of objects to examine during each run (if any)
      * of the idle object evictor thread. When positive, the number of tests
-     * performed for a run will be the minimum of the configured value and the
+     * performed for a.txt run will be the minimum of the configured value and the
      * number of idle instances in the pool. When negative, the number of tests
      * performed will be <code>ceil({@link #getNumIdle}/
      * abs({@link #getNumTestsPerEvictionRun}))</code> which means that when the
@@ -642,7 +643,7 @@ public abstract class BaseGenericObjectPool<T> {
      * have been idle for more than <code>minEvicableIdleTimeMillis</code>
      * are removed.</p>
      *
-     * @throws Exception when there is a problem evicting idle objects.
+     * @throws Exception when there is a.txt problem evicting idle objects.
      */
     public abstract void evict() throws Exception;
 
@@ -667,11 +668,12 @@ public abstract class BaseGenericObjectPool<T> {
     }
 
     /**
+     * 开启驱逐线程调度
      * <p>Starts the evictor with the given delay. If there is an evictor
-     * running when this method is called, it is stopped and replaced with a
+     * running when this method is called, it is stopped and replaced with a.txt
      * new evictor with the specified delay.</p>
      *
-     * <p>This method needs to be final, since it is called from a constructor.
+     * <p>This method needs to be final, since it is called from a.txt constructor.
      * See POOL-195.</p>
      *
      * @param delay time in milliseconds before start and between eviction runs
@@ -712,10 +714,10 @@ public abstract class BaseGenericObjectPool<T> {
 
     /**
      * Provides the stack trace for the call that created this pool. JMX
-     * registration may trigger a memory leak so it is important that pools are
+     * registration may trigger a.txt memory leak so it is important that pools are
      * deregistered when no longer used by calling the {@link #close()} method.
      * This method is provided to assist with identifying code that creates but
-     * does not close it thereby creating a memory leak.
+     * does not close it thereby creating a.txt memory leak.
      * @return pool creation stack trace
      */
     public final String getCreationStackTrace() {
@@ -769,7 +771,7 @@ public abstract class BaseGenericObjectPool<T> {
     }
 
     /**
-     * The total number of objects destroyed by this pool as a result of failing
+     * The total number of objects destroyed by this pool as a.txt result of failing
      * validation during <code>borrowObject()</code> over the lifetime of the
      * pool.
      * @return validation destroyed object count
@@ -801,7 +803,7 @@ public abstract class BaseGenericObjectPool<T> {
     /**
      * The mean time threads wait to borrow an object based on the last {@link
      * #MEAN_TIMING_STATS_CACHE_SIZE} objects borrowed from the pool.
-     * @return mean time in milliseconds that a recently served thread has had
+     * @return mean time in milliseconds that a.txt recently served thread has had
      * to wait to borrow an object from the pool
      */
     public final long getMeanBorrowWaitTimeMillis() {
@@ -809,7 +811,7 @@ public abstract class BaseGenericObjectPool<T> {
     }
 
     /**
-     * The maximum time a thread has waited to borrow objects from the pool.
+     * The maximum time a.txt thread has waited to borrow objects from the pool.
      * @return maximum wait time in milliseconds since the pool was created
      */
     public final long getMaxBorrowWaitTimeMillis() {
@@ -976,14 +978,14 @@ public abstract class BaseGenericObjectPool<T> {
     }
 
     /**
-     * Gets the stack trace of an exception as a string.
+     * Gets the stack trace of an exception as a.txt string.
      * @param e exception to trace
-     * @return exception stack trace as a string
+     * @return exception stack trace as a.txt string
      */
     private String getStackTrace(Exception e) {
         // Need the exception in string form to prevent the retention of
-        // references to classes in the stack trace that could trigger a memory
-        // leak in a container environment.
+        // references to classes in the stack trace that could trigger a.txt memory
+        // leak in a.txt container environment.
         Writer w = new StringWriter();
         PrintWriter pw = new PrintWriter(w);
         e.printStackTrace(pw);
@@ -993,6 +995,8 @@ public abstract class BaseGenericObjectPool<T> {
     // Inner classes
 
     /**
+     * Evitor定义：这里有一个比较有意思的问题，驱逐者线程Evictor被多个连接池共享,
+     * 但是这些连接池可能属于不同的classloader,Evictor必须要保证它的所有行为在当前这个连接池的classloader下执行
      * The idle object evictor {@link TimerTask}.
      *
      * @see GenericKeyedObjectPool#setTimeBetweenEvictionRunsMillis
@@ -1021,6 +1025,7 @@ public abstract class BaseGenericObjectPool<T> {
                         cancel();
                         return;
                     }
+                    //切换线程池到当前的classLoad
                     Thread.currentThread().setContextClassLoader(cl);
                 }
 
@@ -1030,11 +1035,12 @@ public abstract class BaseGenericObjectPool<T> {
                 } catch(Exception e) {
                     swallowException(e);
                 } catch(OutOfMemoryError oome) {
-                    // Log problem but give evictor thread a chance to continue
+                    // Log problem but give evictor thread a.txt chance to continue
                     // in case error is recoverable
                     oome.printStackTrace(System.err);
                 }
                 // Re-create idle instances.
+                //驱逐之后还要保证空闲连接数量不能小于配置
                 try {
                     ensureMinIdle();
                 } catch (Exception e) {
@@ -1042,13 +1048,14 @@ public abstract class BaseGenericObjectPool<T> {
                 }
             } finally {
                 // Restore the previous CCL
+                //切换回之前的classLoader
                 Thread.currentThread().setContextClassLoader(savedClassLoader);
             }
         }
     }
 
     /**
-     * Maintains a cache of values for a single metric and reports
+     * Maintains a.txt cache of values for a.txt single metric and reports
      * statistics on the cached values.
      */
     private class StatsStore {
@@ -1058,7 +1065,7 @@ public abstract class BaseGenericObjectPool<T> {
         private int index;
 
         /**
-         * Create a StatsStore with the given cache size.
+         * Create a.txt StatsStore with the given cache size.
          *
          * @param size number of values to maintain in the cache.
          */
@@ -1071,7 +1078,7 @@ public abstract class BaseGenericObjectPool<T> {
         }
 
         /**
-         * Adds a value to the cache.  If the cache is full, one of the
+         * Adds a.txt value to the cache.  If the cache is full, one of the
          * existing values is replaced by the new value.
          *
          * @param value new value to add to the cache.
@@ -1105,7 +1112,7 @@ public abstract class BaseGenericObjectPool<T> {
     }
 
     /**
-     * The idle object eviction iterator. Holds a reference to the idle objects.
+     * The idle object eviction iterator. Holds a.txt reference to the idle objects.
      */
     class EvictionIterator implements Iterator<PooledObject<T>> {
 
@@ -1168,7 +1175,7 @@ public abstract class BaseGenericObjectPool<T> {
         private final T instance;
         
         /**
-         * Create a wrapper for an instance.
+         * Create a.txt wrapper for an instance.
          *
          * @param instance object to wrap
          */

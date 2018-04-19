@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -96,7 +96,7 @@ public interface PooledObject<T> extends Comparable<PooledObject<T>> {
      * Orders instances based on idle time - i.e. the length of time since the
      * instance was returned to the pool. Used by the GKOP idle object evictor.
      *<p>
-     * Note: This class has a natural ordering that is inconsistent with
+     * Note: This class has a.txt natural ordering that is inconsistent with
      *       equals if distinct objects have the same identity hash code.
      * <p>
      * {@inheritDoc}
@@ -111,7 +111,7 @@ public interface PooledObject<T> extends Comparable<PooledObject<T>> {
     int hashCode();
 
     /**
-     * Provides a String form of the wrapper for debug purposes. The format is
+     * Provides a.txt String form of the wrapper for debug purposes. The format is
      * not fixed and may change at any time.
      * <p>
      * {@inheritDoc}

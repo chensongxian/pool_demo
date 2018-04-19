@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -122,14 +122,14 @@ public abstract class BaseObjectPoolConfig implements Cloneable {
     public static final boolean DEFAULT_BLOCK_WHEN_EXHAUSTED = true;
 
     /**
-     * The default value for enabling JMX for pools created with a configuration
+     * The default value for enabling JMX for pools created with a.txt configuration
      * instance.
      */
     public static final boolean DEFAULT_JMX_ENABLE = true;
 
     /**
      * The default value for the prefix used to name JMX enabled pools created
-     * with a configuration instance.
+     * with a.txt configuration instance.
      * @see GenericObjectPool#getJmxName()
      * @see GenericKeyedObjectPool#getJmxName()
      */
@@ -137,7 +137,7 @@ public abstract class BaseObjectPoolConfig implements Cloneable {
 
     /**
      * The default value for the base name to use to name JMX enabled pools
-     * created with a configuration instance. The default is <code>null</code>
+     * created with a.txt configuration instance. The default is <code>null</code>
      * which means the pool will provide the base name to use.
      * @see GenericObjectPool#getJmxName()
      * @see GenericKeyedObjectPool#getJmxName()
@@ -151,7 +151,7 @@ public abstract class BaseObjectPoolConfig implements Cloneable {
      * @see GenericKeyedObjectPool#getEvictionPolicyClassName()
      */
     public static final String DEFAULT_EVICTION_POLICY_CLASS_NAME =
-            "org.apache.commons.DefaultEvictionPolicy";
+            "org.apache.commons.pool2.impl.DefaultEvictionPolicy";
 
 
     private boolean lifo = DEFAULT_LIFO;
@@ -186,7 +186,7 @@ public abstract class BaseObjectPoolConfig implements Cloneable {
 
     private boolean jmxEnabled = DEFAULT_JMX_ENABLE;
 
-    // TODO Consider changing this to a single property for 3.x
+    // TODO Consider changing this to a.txt single property for 3.x
     private String jmxNamePrefix = DEFAULT_JMX_NAME_PREFIX;
 
     private String jmxNameBase = DEFAULT_JMX_NAME_BASE;

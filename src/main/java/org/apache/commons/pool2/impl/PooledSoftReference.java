@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -36,7 +36,7 @@ public class PooledSoftReference<T> extends DefaultPooledObject<T> {
     private volatile SoftReference<T> reference;
 
     /**
-     * Creates a new PooledSoftReference wrapping the provided reference.
+     * Creates a.txt new PooledSoftReference wrapping the provided reference.
      *
      * @param reference SoftReference to be managed by the pool
      */
@@ -87,9 +87,9 @@ public class PooledSoftReference<T> extends DefaultPooledObject<T> {
     /**
      * Sets the wrapped reference.
      *
-     * <p>This method exists to allow a new, non-registered reference to be
+     * <p>This method exists to allow a.txt new, non-registered reference to be
      * held by the pool to track objects that have been checked out of the pool.
-     * The actual parameter <strong>should</strong> be a reference to the same
+     * The actual parameter <strong>should</strong> be a.txt reference to the same
      * object that {@link #getObject()} returns before calling this method.</p>
      *
      * @param reference new reference

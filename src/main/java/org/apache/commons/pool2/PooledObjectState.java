@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -17,7 +17,7 @@
 package org.apache.commons.pool2;
 
 /**
- * Provides the possible states that a {@link PooledObject} may be in.
+ * Provides the possible states that a.txt {@link PooledObject} may be in.
  *
  * @version $Revision: $
  *
@@ -25,64 +25,52 @@ package org.apache.commons.pool2;
  */
 public enum PooledObjectState {
     /**
-     * In the queue, not in use.
+     * 空闲中，在队列中，但是没有在使用.
      */
     IDLE,
 
     /**
-     * In use.
+     * 使用中.
      */
     ALLOCATED,
 
     /**
-     * In the queue, currently being tested for possible eviction.
+     * 在队列中，正在被检查.
      */
     EVICTION,
 
     /**
-     * Not in the queue, currently being tested for possible eviction. An
-     * attempt to borrow the object was made while being tested which removed it
-     * from the queue. It should be returned to the head of the queue once
-     * eviction testing completes.
-     * TODO: Consider allocating object and ignoring the result of the eviction
-     *       test.
+     * 不在队列 中，检查结束后放回头部
      */
     EVICTION_RETURN_TO_HEAD,
 
     /**
-     * In the queue, currently being validated.
+     * 在队列中，正在被检查.
      */
     VALIDATION,
 
     /**
-     * Not in queue, currently being validated. The object was borrowed while
-     * being validated and since testOnBorrow was configured, it was removed
-     * from the queue and pre-allocated. It should be allocated once validation
-     * completes.
+     * 验证结束要被分配
      */
     VALIDATION_PREALLOCATED,
 
     /**
-     * Not in queue, currently being validated. An attempt to borrow the object
-     * was made while previously being tested for eviction which removed it from
-     * the queue. It should be returned to the head of the queue once validation
-     * completes.
+     * 检查结束要放回队列头部
      */
     VALIDATION_RETURN_TO_HEAD,
 
     /**
-     * Failed maintenance (e.g. eviction test or validation) and will be / has
-     * been destroyed
+     * 不可用，即将或已经被销毁
      */
     INVALID,
 
     /**
-     * Deemed abandoned, to be invalidated.
+     * 被遗弃，即将不可用.
      */
     ABANDONED,
 
     /**
-     * Returning to the pool.
+     * 返回对象池.
      */
     RETURNING
 }

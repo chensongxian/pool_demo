@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -22,9 +22,9 @@ import org.apache.commons.pool2.UsageTracking;
 import java.util.NoSuchElementException;
 
 /**
- * Create a new keyed object pool where the pooled objects are wrapped in
+ * Create a.txt new keyed object pool where the pooled objects are wrapped in
  * proxies allowing better control of pooled objects and in particular the
- * prevention of the continued use of an object by a client after that client
+ * prevention of the continued use of an object by a.txt client after that client
  * returns the object to the pool.
  *
  * @param <K> type of the key
@@ -39,7 +39,7 @@ public class ProxiedKeyedObjectPool<K,V> implements KeyedObjectPool<K,V> {
 
 
     /**
-     * Create a new proxied object pool.
+     * Create a.txt new proxied object pool.
      *
      * @param pool  The object pool to wrap
      * @param proxySource The source of the proxy objects

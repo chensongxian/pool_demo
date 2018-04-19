@@ -4,7 +4,7 @@
  * this work for additional information regarding copyright ownership.
  * The ASF licenses this file to You under the Apache License, Version 2.0
  * (the "License"); you may not use this file except in compliance with
- * the License.  You may obtain a copy of the License at
+ * the License.  You may obtain a.txt copy of the License at
  *
  *      http://www.apache.org/licenses/LICENSE-2.0
  *
@@ -41,7 +41,7 @@ public abstract class BaseKeyedPooledObjectFactory<K,V>
      * @param key the key used when constructing the object
      * @return an instance that can be served by the pool
      *
-     * @throws Exception if there is a problem creating a new instance,
+     * @throws Exception if there is a.txt problem creating a.txt new instance,
      *    this will be propagated to the code requesting an object.
      */
     public abstract V create(K key)
@@ -53,7 +53,7 @@ public abstract class BaseKeyedPooledObjectFactory<K,V>
      *
      * @param value the instance to wrap
      *
-     * @return The provided instance, wrapped by a {@link PooledObject}
+     * @return The provided instance, wrapped by a.txt {@link PooledObject}
      */
     public abstract PooledObject<V> wrap(V value);
 
@@ -65,10 +65,10 @@ public abstract class BaseKeyedPooledObjectFactory<K,V>
     /**
      * Destroy an instance no longer needed by the pool.
      * <p>
-     * The default implementation is a no-op.
+     * The default implementation is a.txt no-op.
      *
      * @param key the key used when selecting the instance
-     * @param p a {@code PooledObject} wrapping the the instance to be destroyed
+     * @param p a.txt {@code PooledObject} wrapping the the instance to be destroyed
      */
     @Override
     public void destroyObject(K key, PooledObject<V> p)
@@ -81,7 +81,7 @@ public abstract class BaseKeyedPooledObjectFactory<K,V>
      * The default implementation always returns {@code true}.
      *
      * @param key the key used when selecting the object
-     * @param p a {@code PooledObject} wrapping the the instance to be validated
+     * @param p a.txt {@code PooledObject} wrapping the the instance to be validated
      * @return always <code>true</code> in the default implementation
      */
     @Override
@@ -92,10 +92,10 @@ public abstract class BaseKeyedPooledObjectFactory<K,V>
     /**
      * Reinitialize an instance to be returned by the pool.
      * <p>
-     * The default implementation is a no-op.
+     * The default implementation is a.txt no-op.
      *
      * @param key the key used when selecting the object
-     * @param p a {@code PooledObject} wrapping the the instance to be activated
+     * @param p a.txt {@code PooledObject} wrapping the the instance to be activated
      */
     @Override
     public void activateObject(K key, PooledObject<V> p)
@@ -105,10 +105,10 @@ public abstract class BaseKeyedPooledObjectFactory<K,V>
     /**
      * Uninitialize an instance to be returned to the idle object pool.
      * <p>
-     * The default implementation is a no-op.
+     * The default implementation is a.txt no-op.
      *
      * @param key the key used when selecting the object
-     * @param p a {@code PooledObject} wrapping the the instance to be passivated
+     * @param p a.txt {@code PooledObject} wrapping the the instance to be passivated
      */
     @Override
     public void passivateObject(K key, PooledObject<V> p)
